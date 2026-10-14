@@ -4,6 +4,14 @@ var grid: Array = []
 
 func _init(width: int, height: int) -> void:
 	create_grid(width, height)
+	var ore = grid[3][5].ore
+	ore = OreBehavior.new(10)
+	print(ore.amount)
+	ore.dig()
+	ore.dig()
+	ore.dig()
+	ore.dig()
+	ore.dig()
 	
 
 func create_grid(width: int, height: int) -> void:
@@ -12,6 +20,5 @@ func create_grid(width: int, height: int) -> void:
 		var row = []
 		row.resize(width) # Creates X columns
 		for x in range(width):
-			row[x] = TerrainTile.new()
+			row[x] = Tile.new()
 		grid[y] = row # Add X columns
-		
