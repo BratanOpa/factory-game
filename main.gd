@@ -1,4 +1,4 @@
 extends Node2D
-var terraingrid = TerrainGrid.new(10,10)
+var terraingrid = TileGrid.new(20,10)
 func _ready():
 	pass

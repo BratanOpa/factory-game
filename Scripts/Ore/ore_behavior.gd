@@ -1,9 +1,11 @@
 class_name OreBehavior
 
+var config: Dictionary
 var amount: int
 
-func _init(start_amount: int) -> void:
-	amount = start_amount
+func _init(cfg: Dictionary) -> void:
+	config = cfg
+	amount = randi_range(cfg.min, cfg.max)
 
 func dig() -> void:
 	amount -= 1
