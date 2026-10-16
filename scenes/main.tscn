@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://lkeh5bcxpmdn" path="res://tilesetsTemp/plains.png" id="4_85g3d"]
 [ext_resource type="Texture2D" uid="uid://bllmlyevvpdeg" path="res://tilesetsTemp/walls/walls.png" id="4_o6xl0"]
 [ext_resource type="Script" uid="uid://ifo73r4knve7" path="res://scripts/tileMaps/oreLayer.gd" id="5_choun"]
+[ext_resource type="PackedScene" uid="uid://60n87vu2qdqq" path="res://scenes/mining_drill.tscn" id="6_tipki"]
 [ext_resource type="Script" uid="uid://pcty8gea6gwq" path="res://scripts/tileMaps/wall_layer.gd" id="6_ya4ey"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
@@ -478,7 +479,7 @@ terrain_set_0/terrain_0/color = Color(0.18765754, 0.15266371, 0.92578125, 1)
 sources/0 = SubResource("TileSetAtlasSource_tipki")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdiw"]
-radius = 63.03174
+radius = 9.0
 
 [node name="Main" type="Node2D" unique_id=1633186520 node_paths=PackedStringArray("target_node")]
 script = ExtResource("1_tefeu")
@@ -501,6 +502,8 @@ tile_map_data = PackedByteArray("AABVACAAAAADAAUAAABVAB8AAAADAAQAAABVAB4AAAADAAQ
 tile_set = SubResource("TileSet_uv5eo")
 script = ExtResource("6_ya4ey")
 
+[node name="MiningDrill" parent="." unique_id=1715954616 instance=ExtResource("6_tipki")]
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1962726751]
 script = ExtResource("2_o6xl0")
 
@@ -509,6 +512,8 @@ top_level = true
 shape = SubResource("CircleShape2D_1tdiw")
 
 [node name="Icon" type="Sprite2D" parent="Player" unique_id=1814962462]
+scale = Vector2(0.15, 0.15)
 texture = ExtResource("3_tipki")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1530150607]
+zoom = Vector2(2, 2)
