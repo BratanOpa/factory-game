@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://60n87vu2qdqq"]
+
+[ext_resource type="Texture2D" uid="uid://dpn52c8l1ou7v" path="res://tilesetsTemp/automatisation/Assembling_machine_1_entity-removebg-preview.png" id="1_5i4ae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6d4qn"]
+size = Vector2(28, 27)
+
+[node name="MiningDrill" type="StaticBody2D" unique_id=1715954616]
+
+[node name="AssemblerSprite" type="Sprite2D" parent="." unique_id=1862540965]
+position = Vector2(144, -16)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("1_5i4ae")
+offset = Vector2(76.19049, 66.66667)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741338610]
+position = Vector2(160, 0.5)
+shape = SubResource("RectangleShape2D_6d4qn")
