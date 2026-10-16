@@ -1,16 +1,17 @@
 [gd_scene format=4 uid="uid://dp7r87fkiyifk"]
 
-[ext_resource type="Script" uid="uid://dukxigqykxn7t" path="res://scripts/main.gd" id="1_tbgi4"]
-[ext_resource type="Script" uid="uid://dbd35sbsv44o2" path="res://scripts/player.gd" id="2_tefeu"]
-[ext_resource type="Texture2D" uid="uid://3kc5k1hk63pc" path="res://tilesetsTemp/godot.svg" id="3_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://lkeh5bcxpmdn" path="res://tilesetsTemp/plains.png" id="4_tipki"]
-[ext_resource type="Script" uid="uid://ifo73r4knve7" path="res://scripts/tileMaps/oreLayer.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://dukxigqykxn7t" path="res://scripts/main.gd" id="1_tefeu"]
+[ext_resource type="Script" uid="uid://dbd35sbsv44o2" path="res://scripts/player.gd" id="2_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://3kc5k1hk63pc" path="res://tilesetsTemp/godot.svg" id="3_tipki"]
+[ext_resource type="Texture2D" uid="uid://lkeh5bcxpmdn" path="res://tilesetsTemp/plains.png" id="4_85g3d"]
+[ext_resource type="Script" uid="uid://ifo73r4knve7" path="res://scripts/tileMaps/oreLayer.gd" id="5_choun"]
+[ext_resource type="Script" uid="uid://pcty8gea6gwq" path="res://scripts/tileMaps/wall_layer.gd" id="6_ya4ey"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdiw"]
 radius = 63.03174
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lquwl"]
-texture = ExtResource("4_tipki")
+texture = ExtResource("4_85g3d")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -242,7 +243,7 @@ func _process(delta: float) -> void:
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hptm8"]
 resource_name = "Ore"
-texture = ExtResource("4_tipki")
+texture = ExtResource("4_85g3d")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -326,19 +327,19 @@ custom_data_layer_1/type = 2
 sources/0 = SubResource("TileSetAtlasSource_hptm8")
 
 [node name="Main" type="Node2D" unique_id=1633186520 node_paths=PackedStringArray("target_node")]
-script = ExtResource("1_tbgi4")
+script = ExtResource("1_tefeu")
 target_node = NodePath("TileMapLayers/OreLayer")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1962726751]
 visible = false
-script = ExtResource("2_tefeu")
+script = ExtResource("2_o6xl0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1295802240]
 top_level = true
 shape = SubResource("CircleShape2D_1tdiw")
 
 [node name="Icon" type="Sprite2D" parent="Player" unique_id=1814962462]
-texture = ExtResource("3_tbgi4")
+texture = ExtResource("3_tipki")
 
 [node name="TileMapLayers" type="Node2D" parent="." unique_id=1580933070]
 
@@ -350,6 +351,7 @@ script = SubResource("GDScript_1bvp3")
 [node name="OreLayer" type="TileMapLayer" parent="TileMapLayers" unique_id=1758047017]
 tile_map_data = PackedByteArray("AAAJAP//AAAAAAgAAAAJAAAAAAAAAAgAAAAKAP//AAAAAAgAAAAKAAAAAAAAAAgAAAAMAAAAAAABAAgAAAAMAAEAAAABAAgAAAANAAAAAAABAAgAAAANAAEAAAABAAgAAAARAAAAAAACAAgAAAARAAEAAAACAAgAAAASAAEAAAACAAgAAAASAAAAAAACAAgAAAAAAAAAAAAAAAgAAAAAAP//AAAAAAgAAAD/////AAAAAAgAAAD//wAAAAAAAAgAAAA=")
 tile_set = SubResource("TileSet_lquwl")
-script = ExtResource("5_tbgi4")
+script = ExtResource("5_choun")
 
-[node name="WaterLayer" type="TileMapLayer" parent="TileMapLayers" unique_id=1079801056]
+[node name="WallLayer" type="TileMapLayer" parent="TileMapLayers" unique_id=1079801056]
+script = ExtResource("6_ya4ey")
