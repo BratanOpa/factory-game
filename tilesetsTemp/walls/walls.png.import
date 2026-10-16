@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gywincq4fsf3"
-path="res://.godot/imported/Iron_Ore.png-cfadb19c7bcc4c237ea020e36825f004.ctex"
+uid="uid://bllmlyevvpdeg"
+path="res://.godot/imported/walls.png-336109d109d25b2778df01d12677708d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Ores/Iron_Ore.png"
-dest_files=["res://.godot/imported/Iron_Ore.png-cfadb19c7bcc4c237ea020e36825f004.ctex"]
+source_file="res://tilesetsTemp/walls/walls.png"
+dest_files=["res://.godot/imported/walls.png-336109d109d25b2778df01d12677708d.ctex"]
 
 [params]
 
