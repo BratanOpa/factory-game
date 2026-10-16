@@ -22,11 +22,10 @@ func get_durability(cell: Vector2i) -> int:
 	# check cell data
 	var data = get_cell_tile_data(cell)
 	if data:
-		if data.has_custom_data("durability"):
-			durability = data.get_custom_data("durability")
+		durability = data.get_custom_data("durability")
 	if durability == null or durability <= 0:
 		durability = 1
-		push_warning("WARNING! WALL ON ",cell," HAD NO DURABILITY SET. DEFAULTING TO 1")
+		push_warning("WALL ON ",cell," HAD NO DURABILITY SET. DEFAULTING TO 1")
 	return durability
 
 func destroy_wall(cell: Vector2i) -> void:
