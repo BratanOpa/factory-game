@@ -1,6 +1,8 @@
 class_name Walls
 extends TileMapLayer
 
+signal wall_destroyed(cell: Vector2i)
+
 var walls_durability = {}
 
 func dig(cell: Vector2i, amount: int) -> bool:
@@ -31,3 +33,4 @@ func get_durability(cell: Vector2i) -> int:
 func destroy_wall(cell: Vector2i) -> void:
 	erase_cell(cell)
 	walls_durability.erase(cell)
+	wall_destroyed.emit(cell)
