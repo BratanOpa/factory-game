@@ -18,10 +18,9 @@ func _get_under_tiles() -> Array[Vector2i]:	# get ore tiles under the drill
 	for x in range(drill_size.x):
 		for y in range(drill_size.y):
 			var current_tile = top_left_tile + Vector2i(x, y)
-			if get_cell_source_id(cell) != -1:
-				covered_tiles.append(current_tile)
+			covered_tiles.append(current_tile)
 	return covered_tiles
 	
-func _mine() Dictionary{}:
-	pass
+func _mine() -> Dictionary:
+	
 	return {}
