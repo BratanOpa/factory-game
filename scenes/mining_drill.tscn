@@ -19,3 +19,8 @@ offset = Vector2(76.19049, 66.66667)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741338610]
 position = Vector2(16, 16)
 shape = SubResource("RectangleShape2D_6d4qn")
+
+[node name="Timer" type="Timer" parent="." unique_id=1018445506]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

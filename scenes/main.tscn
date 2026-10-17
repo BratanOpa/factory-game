@@ -1391,7 +1391,7 @@ tile_set = SubResource("TileSet_uv5eo")
 script = ExtResource("6_ya4ey")
 
 [node name="MiningDrill" parent="." unique_id=1715954616 instance=ExtResource("6_tipki")]
-position = Vector2(144, -16)
+position = Vector2(130, -16)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1962726751]
 script = ExtResource("2_o6xl0")
