@@ -1,3 +1,4 @@
+class_name OreLayer
 extends TileMapLayer
 
 var ore_amounts_dict: Dictionary = {}	# Contains amount ore remaining

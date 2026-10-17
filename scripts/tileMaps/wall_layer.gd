@@ -1,4 +1,4 @@
-class_name Walls
+class_name WallLayer
 extends TileMapLayer
 
 signal wall_destroyed(cell: Vector2i)

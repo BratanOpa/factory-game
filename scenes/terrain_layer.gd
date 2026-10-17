@@ -1,10 +1,10 @@
 extends TileMapLayer
-# AI CODE:
+
 const TERRAIN_SET = 0
 const FLOOR = 0
 const WALL_ZONE = 1
 
-@export var walls: Walls
+@export var walls: WallLayer
 
 func _ready() -> void:
 	set_cells_terrain_connect(walls.get_used_cells(),TERRAIN_SET,WALL_ZONE)
