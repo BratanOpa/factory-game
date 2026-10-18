@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b5h7ef8uv5mgk" path="res://art/floor/cave_floor.png" id="1_qfnet"]
 [ext_resource type="Script" uid="uid://chco4vhfoa1gb" path="res://scripts/tileMaps/terrain_layer.gd" id="2_i7141"]
-[ext_resource type="Texture2D" uid="uid://lkeh5bcxpmdn" path="res://tilesetsTemp/plains.png" id="3_4mrxx"]
+[ext_resource type="Texture2D" uid="uid://cnr3430xhscib" path="res://art/ores/iron_ore.png" id="3_qfnet"]
 [ext_resource type="Script" uid="uid://ifo73r4knve7" path="res://scripts/tileMaps/ore_layer.gd" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://b4db1qfajab64" path="res://art/walls/cave_walls_v1.png" id="5_w7kh3"]
 [ext_resource type="Script" uid="uid://pcty8gea6gwq" path="res://scripts/tileMaps/wall_layer.gd" id="6_e3hyu"]
@@ -1122,90 +1122,20 @@ custom_data_layer_0/name = "Walkable"
 custom_data_layer_0/type = 1
 sources/2 = SubResource("TileSetAtlasSource_85g3d")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hptm8"]
-resource_name = "Ore"
-texture = ExtResource("3_4mrxx")
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_i7141"]
+texture = ExtResource("3_qfnet")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-0:7/0 = 0
-1:7/0 = 0
-2:7/0 = 0
-3:7/0 = 0
-0:8/0 = 0
-0:8/0/custom_data_0 = "iron"
-0:8/0/custom_data_1 = 100
-1:8/0 = 0
-1:8/0/custom_data_0 = "copper"
-1:8/0/custom_data_1 = 100
-2:8/0 = 0
-2:8/0/custom_data_0 = "coal"
-2:8/0/custom_data_1 = 50
-3:8/0 = 0
-4:8/0 = 0
-5:8/0 = 0
-0:9/0 = 0
-1:9/0 = 0
-2:9/0 = 0
-3:9/0 = 0
-4:9/0 = 0
-5:9/0 = 0
-0:10/0 = 0
-1:10/0 = 0
-2:10/0 = 0
-3:10/0 = 0
-4:10/0 = 0
-5:10/0 = 0
-0:11/0 = 0
-1:11/0 = 0
-2:11/0 = 0
-3:11/0 = 0
-4:11/0 = 0
-5:11/0 = 0
+0:0/0/custom_data_0 = "iron"
+0:0/0/custom_data_1 = 100
 
 [sub_resource type="TileSet" id="TileSet_lquwl"]
+tile_size = Vector2i(32, 32)
 custom_data_layer_0/name = "OreType"
 custom_data_layer_0/type = 4
 custom_data_layer_1/name = "DefaultAmount"
 custom_data_layer_1/type = 2
-sources/0 = SubResource("TileSetAtlasSource_hptm8")
+sources/2 = SubResource("TileSetAtlasSource_i7141")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ya4ey"]
 texture = ExtResource("5_w7kh3")
@@ -1247,7 +1177,7 @@ script = ExtResource("2_i7141")
 walls = NodePath("../WallLayer")
 
 [node name="OreLayer" type="TileMapLayer" parent="." unique_id=678976847 groups=["ore_layer"]]
-tile_map_data = PackedByteArray("AAAJAP//AAAAAAgAAAAJAAAAAAAAAAgAAAAKAP//AAAAAAgAAAAKAAAAAAAAAAgAAAAMAAAAAAABAAgAAAAMAAEAAAABAAgAAAANAAAAAAABAAgAAAANAAEAAAABAAgAAAARAAAAAAACAAgAAAARAAEAAAACAAgAAAASAAEAAAACAAgAAAASAAAAAAACAAgAAAAAAAAAAAAAAAgAAAAAAP//AAAAAAgAAAD/////AAAAAAgAAAD//wAAAAAAAAgAAADj/wEAAAAAAAgAAADj/wIAAAAAAAgAAADk/wEAAAAAAAgAAADk/wIAAAAAAAgAAAA=")
+tile_map_data = PackedByteArray("AAAJAP//AgAAAAAAAAAJAAAAAgAAAAAAAAAKAP//AgAAAAAAAAAKAAAAAgAAAAAAAAAMAAAAAgAAAAAAAAAMAAEAAgAAAAAAAAANAAAAAgAAAAAAAAANAAEAAgAAAAAAAAARAAAAAgAAAAAAAAARAAEAAgAAAAAAAAASAAEAAgAAAAAAAAASAAAAAgAAAAAAAAAAAAAAAgAAAAAAAAAAAP//AgAAAAAAAAD/////AgAAAAAAAAD//wAAAgAAAAAAAADj/wEAAgAAAAAAAADj/wIAAgAAAAAAAADk/wEAAgAAAAAAAADk/wIAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_lquwl")
 script = ExtResource("4_7r4gi")
 

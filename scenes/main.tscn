@@ -18,4 +18,3 @@ script = ExtResource("8_choun")
 position = Vector2(130, -16)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("9_85g3d")]
-script = null
