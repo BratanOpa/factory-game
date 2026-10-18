@@ -8,13 +8,14 @@ signal wall_destroyed(cell: Vector2i)
 var walls_durability = {}
 
 func dig(cell: Vector2i, amount: int) -> bool:
-	if get_cell_source_id(cell) != -1:
-		var current_durability = get_durability(cell)
-		current_durability -= amount
-		if current_durability <= 0:
-			destroy_wall(cell)
-			return true
-		walls_durability[cell] = current_durability
+	if not _is_diggable(cell):
+		return false
+	var current_durability = get_durability(cell)
+	current_durability -= amount
+	if current_durability <= 0:
+		destroy_wall(cell)
+		return true
+	walls_durability[cell] = current_durability
 	return false
 
 func get_durability(cell: Vector2i) -> int:
@@ -36,3 +37,12 @@ func destroy_wall(cell: Vector2i) -> void:
 	set_cells_terrain_connect([cell], TERRAIN_SET, -1)
 	walls_durability.erase(cell)
 	wall_destroyed.emit(cell)
+
+func _is_diggable(cell: Vector2i) -> bool:
+	if get_cell_source_id(cell) == -1:
+		return false
+	var surrounding_cells = get_surrounding_cells(cell)
+	for close_cell in surrounding_cells:
+		if get_cell_source_id(close_cell) == -1:
+			return true
+	return false
