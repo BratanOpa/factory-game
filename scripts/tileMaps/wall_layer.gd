@@ -7,11 +7,6 @@ signal wall_destroyed(cell: Vector2i)
 
 var walls_durability = {}
 
-func _ready() -> void:
-	dig(Vector2i(11,0),10)
-	dig(Vector2i(12,0),10)
-	dig(Vector2i(13,0),10)
-
 func dig(cell: Vector2i, amount: int) -> bool:
 	if get_cell_source_id(cell) != -1:
 		var current_durability = get_durability(cell)
