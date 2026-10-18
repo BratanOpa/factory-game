@@ -1,7 +1,10 @@
 extends CharacterBody2D
 
-@export var walls: WallLayer
+var walls: WallLayer
 @export var dig_damage := 10
+
+func _ready() -> void:
+	walls = get_tree().get_first_node_in_group("walls_layer")
 
 func _physics_process(_delta: float) -> void:
 	var direction = Input.get_vector("move_left","move_right","move_up","move_down")
