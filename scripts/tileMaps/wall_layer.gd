@@ -1,6 +1,8 @@
 class_name WallLayer
 extends TileMapLayer
 
+const TERRAIN_SET := 0
+
 signal wall_destroyed(cell: Vector2i)
 
 var walls_durability = {}
@@ -36,6 +38,6 @@ func get_durability(cell: Vector2i) -> int:
 	return durability
 
 func destroy_wall(cell: Vector2i) -> void:
-	erase_cell(cell)
+	set_cells_terrain_connect([cell], TERRAIN_SET, -1)
 	walls_durability.erase(cell)
 	wall_destroyed.emit(cell)
