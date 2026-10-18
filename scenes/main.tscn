@@ -4,10 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://b5h7ef8uv5mgk" path="res://art/floor/cave_floor.png" id="2_tipki"]
 [ext_resource type="Script" uid="uid://chco4vhfoa1gb" path="res://scenes/terrain_layer.gd" id="3_85g3d"]
 [ext_resource type="Texture2D" uid="uid://lkeh5bcxpmdn" path="res://tilesetsTemp/plains.png" id="4_85g3d"]
-[ext_resource type="Script" uid="uid://ifo73r4knve7" path="res://scripts/tileMaps/oreLayer.gd" id="5_choun"]
+[ext_resource type="Script" uid="uid://ifo73r4knve7" path="res://scripts/tileMaps/ore_layer.gd" id="5_choun"]
 [ext_resource type="Texture2D" uid="uid://b4db1qfajab64" path="res://art/walls/cave_walls_v1.png" id="6_choun"]
 [ext_resource type="PackedScene" uid="uid://60n87vu2qdqq" path="res://scenes/mining_drill.tscn" id="6_tipki"]
 [ext_resource type="Script" uid="uid://pcty8gea6gwq" path="res://scripts/tileMaps/wall_layer.gd" id="6_ya4ey"]
+[ext_resource type="Script" uid="uid://c84gu5ms7rjtx" path="res://scripts/tileMaps/machine_layer.gd" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="9_85g3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_85g3d"]
@@ -1263,7 +1264,10 @@ tile_map_data = PackedByteArray("AAA0ABsAAQABAAAAAAA0ABoAAQAAAAAAAAA0ABkAAQAAAAA
 tile_set = SubResource("TileSet_8ywgp")
 script = ExtResource("6_ya4ey")
 
-[node name="MiningDrill" parent="." unique_id=1715954616 instance=ExtResource("6_tipki")]
+[node name="MachineLayer" type="Node2D" parent="TileMapLayers" unique_id=859459728]
+script = ExtResource("8_choun")
+
+[node name="MiningDrill" parent="TileMapLayers/MachineLayer" unique_id=1715954616 instance=ExtResource("6_tipki")]
 position = Vector2(130, -16)
 
 [node name="Player" parent="." unique_id=467231700 node_paths=PackedStringArray("walls") instance=ExtResource("9_85g3d")]
