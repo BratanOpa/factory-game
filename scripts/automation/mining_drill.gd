@@ -4,7 +4,7 @@ var current_tile_index: int = 0	# just dummy indexer
 var stored_item: String = "" # holds the mined item if output is blocked
 
 func _ready() -> void:
-	position = position.snapped(Vector2(16, 16))	# snap position to grid 16x16 px textures
+	position = position.snapped(Vector2(32, 32))	# snap position to grid 16x16 px textures
 	ore_layer = get_tree().get_first_node_in_group("ore_layer")
 	grid_pos = ore_layer.local_to_map(ore_layer.to_local(global_position))
 	

@@ -15,6 +15,6 @@ script = ExtResource("1_tefeu")
 script = ExtResource("8_choun")
 
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("6_tipki")]
-position = Vector2(130, -16)
+position = Vector2(0, -32)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("9_85g3d")]
