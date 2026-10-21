@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://df6rxkpq8okqv"
-path="res://.godot/imported/cave_walls_v2.png-0b3e0d755238ac23f847f5b6ddba5b51.ctex"
+uid="uid://cyvh6mjyfxror"
+path="res://.godot/imported/floor_tileset_final.png-1173c2a8300005ac9cd28a179333cbbf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/walls/cave_walls_v2.png"
-dest_files=["res://.godot/imported/cave_walls_v2.png-0b3e0d755238ac23f847f5b6ddba5b51.ctex"]
+source_file="res://art/tilesets/floor_tileset_final.png"
+dest_files=["res://.godot/imported/floor_tileset_final.png-1173c2a8300005ac9cd28a179333cbbf.ctex"]
 
 [params]
 
