@@ -1,21 +1,23 @@
 [gd_scene format=3 uid="uid://di46jbj14qeve"]
 
-[ext_resource type="Texture2D" uid="uid://3kc5k1hk63pc" path="res://tilesetsTemp/godot.svg" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://qtecrusx443f" path="res://art/Player/lazer_arms_v3.png" id="1_dqkch"]
 [ext_resource type="Script" uid="uid://t0y6hc0ned3b" path="res://scripts/player/movement.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://d37s16400lgcq" path="res://scripts/player/digger.gd" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://dmt8ly8nmgjr0" path="res://scripts/player/face_direction.gd" id="4_qlg0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdiw"]
-radius = 9.0
+radius = 13.0
 
 [node name="Player" type="CharacterBody2D" unique_id=467231700]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1731400989]
+visible = false
 top_level = true
 shape = SubResource("CircleShape2D_1tdiw")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=2032793404]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_qhqgy")
+[node name="Body" type="Sprite2D" parent="." unique_id=2032793404]
+texture = ExtResource("1_dqkch")
+offset = Vector2(3, 0)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=659949062]
 zoom = Vector2(2, 2)
@@ -25,3 +27,8 @@ script = ExtResource("3_qhqgy")
 
 [node name="Digger" type="Node2D" parent="." unique_id=411662257]
 script = ExtResource("4_dqkch")
+
+[node name="FaceDirection" type="Node" parent="." unique_id=2109730867 node_paths=PackedStringArray("icon")]
+script = ExtResource("4_qlg0r")
+icon = NodePath("../Body")
+speed = 15.0
