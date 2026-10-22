@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://di46jbj14qeve"]
 
 [ext_resource type="Texture2D" uid="uid://qtecrusx443f" path="res://art/Player/lazer_arms_v3.png" id="1_dqkch"]
+[ext_resource type="Texture2D" uid="uid://bt0c0sysbp5hp" path="res://art/Player/light_cone.png" id="2_qlg0r"]
 [ext_resource type="Script" uid="uid://t0y6hc0ned3b" path="res://scripts/player/movement.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://d37s16400lgcq" path="res://scripts/player/digger.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://dmt8ly8nmgjr0" path="res://scripts/player/face_direction.gd" id="4_qlg0r"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdiw"]
-radius = 13.0
+radius = 11.0
+
+[sub_resource type="Gradient" id="Gradient_dqkch"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yqxwo"]
+gradient = SubResource("Gradient_dqkch")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
 
 [node name="Player" type="CharacterBody2D" unique_id=467231700]
 
@@ -19,8 +29,22 @@ shape = SubResource("CircleShape2D_1tdiw")
 texture = ExtResource("1_dqkch")
 offset = Vector2(3, 0)
 
+[node name="Glow" type="PointLight2D" parent="Body" unique_id=268909887]
+energy = 0.6
+texture = SubResource("GradientTexture2D_yqxwo")
+offset = Vector2(-1, 0)
+texture_scale = 6.0
+
+[node name="Flash" type="PointLight2D" parent="Body" unique_id=1874332546]
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 5.0
+texture = ExtResource("2_qlg0r")
+offset = Vector2(137, 0)
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=659949062]
-zoom = Vector2(2, 2)
+zoom = Vector2(1.5, 1.5)
 
 [node name="Movement" type="Node" parent="." unique_id=1880376695]
 script = ExtResource("3_qhqgy")
