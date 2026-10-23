@@ -39,7 +39,7 @@ texture_scale = 6.0
 energy = 0.5
 shadow_enabled = true
 shadow_filter = 2
-shadow_filter_smooth = 5.0
+shadow_filter_smooth = 1.0
 texture = ExtResource("2_qlg0r")
 offset = Vector2(137, 0)
 
@@ -55,4 +55,4 @@ script = ExtResource("4_dqkch")
 [node name="FaceDirection" type="Node" parent="." unique_id=2109730867 node_paths=PackedStringArray("icon")]
 script = ExtResource("4_qlg0r")
 icon = NodePath("../Body")
-speed = 15.0
+speed = 20.0
