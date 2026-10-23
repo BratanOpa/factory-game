@@ -1,24 +1,22 @@
 [gd_scene format=3 uid="uid://60n87vu2qdqq"]
 
-[ext_resource type="Texture2D" uid="uid://dpn52c8l1ou7v" path="res://tilesetsTemp/automatisation/Assembling_machine_1_entity-removebg-preview.png" id="1_5i4ae"]
 [ext_resource type="Script" uid="uid://csdtotrco6anv" path="res://scripts/automation/mining_drill.gd" id="1_8ywgp"]
+[ext_resource type="Texture2D" uid="uid://0e1ildueae01" path="res://art/machines/mining_drill_v2.png" id="2_8ywgp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6d4qn"]
-size = Vector2(58, 57)
+size = Vector2(44, 44)
 
 [node name="MiningDrill" type="StaticBody2D" unique_id=1715954616]
+collision_layer = 2
 script = ExtResource("1_8ywgp")
 machine_size = Vector2i(2, 2)
 
-[node name="AssemblerSprite" type="Sprite2D" parent="." unique_id=1862540965]
-position = Vector2(3.0517578e-05, -9.536743e-07)
-scale = Vector2(0.42, 0.42)
-texture = ExtResource("1_5i4ae")
-offset = Vector2(76.19049, 66.66667)
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1862540965]
+texture = ExtResource("2_8ywgp")
+offset = Vector2(32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741338610]
-visible = false
-position = Vector2(32, 33.5)
+position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_6d4qn")
 
 [node name="Timer" type="Timer" parent="." unique_id=1018445506]
