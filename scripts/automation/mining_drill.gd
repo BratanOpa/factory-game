@@ -6,17 +6,15 @@ var stored_item: String = "" # holds the mined item if output is blocked
 @export var mining_amount : int = 1
 
 func _on_timer_timeout() -> void:	# timer-node
-	if not stored_item.is_empty():
-		if push_item(stored_item):
-			stored_item = ""
-		else:
+	if stored_item.is_empty():
+		var mine_result = _mine()
+		if mine_result.is_empty():
+			$Timer.stop()	# timer stop
 			return
-	var mine_result = _mine()
-	if mine_result.is_empty():
-		$Timer.stop()	# timer stop
-		return
-	stored_item = mine_result.keys()[0]
-	print(stored_item)
+		stored_item = mine_result.keys()[0]
+		print(stored_item)
+	if push_item(stored_item):
+		stored_item = ""
 
 func _get_under_pos() -> Array[Vector2i]:	# get ore tiles pos under the drill
 	var covered_tiles: Array[Vector2i] = []

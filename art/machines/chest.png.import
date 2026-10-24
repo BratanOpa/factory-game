@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bllmlyevvpdeg"
-path="res://.godot/imported/walls.png-336109d109d25b2778df01d12677708d.ctex"
+uid="uid://rlf4je552p0k"
+path="res://.godot/imported/chest.png-06db67b004fdcd636181e1eed5e02303.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tilesetsTemp/walls/walls.png"
-dest_files=["res://.godot/imported/walls.png-336109d109d25b2778df01d12677708d.ctex"]
+source_file="res://art/machines/chest.png"
+dest_files=["res://.godot/imported/chest.png-06db67b004fdcd636181e1eed5e02303.ctex"]
 
 [params]
 

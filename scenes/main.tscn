@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dukxigqykxn7t" path="res://scripts/main.gd" id="1_tefeu"]
 [ext_resource type="PackedScene" uid="uid://tog7dt24wg3s" path="res://scenes/world.tscn" id="2_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://blmmg4q6a6u6e" path="res://scenes/test_chest.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://60n87vu2qdqq" path="res://scenes/mining_drill.tscn" id="6_tipki"]
 [ext_resource type="Script" uid="uid://c84gu5ms7rjtx" path="res://scripts/tileMaps/machine_layer.gd" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="9_85g3d"]
@@ -14,7 +15,10 @@ script = ExtResource("1_tefeu")
 [node name="MachineLayer" type="Node2D" parent="." unique_id=859459728]
 script = ExtResource("8_choun")
 
+[node name="TestChest" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("6_tefeu")]
+position = Vector2(3, 30)
+
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("6_tipki")]
-position = Vector2(0, -32)
+position = Vector2(-5, -27)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("9_85g3d")]

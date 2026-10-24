@@ -16,6 +16,7 @@ texture = ExtResource("2_8ywgp")
 offset = Vector2(32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741338610]
+visible = false
 position = Vector2(32, 32)
 shape = SubResource("RectangleShape2D_6d4qn")
 
