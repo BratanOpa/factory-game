@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cyvh6mjyfxror" path="res://art/tilesets/floor_tileset_final.png" id="1_qfnet"]
 [ext_resource type="Script" uid="uid://chco4vhfoa1gb" path="res://scripts/tileMaps/terrain_layer.gd" id="2_i7141"]
-[ext_resource type="Texture2D" uid="uid://cnr3430xhscib" path="res://art/ores/iron_ore.png" id="3_qfnet"]
+[ext_resource type="Texture2D" uid="uid://cnr3430xhscib" path="res://art/ores/Iron_Ore.png" id="3_qfnet"]
 [ext_resource type="Script" uid="uid://ifo73r4knve7" path="res://scripts/tileMaps/ore_layer.gd" id="4_7r4gi"]
 [ext_resource type="Texture2D" uid="uid://byl68ybsutu18" path="res://art/tilesets/walls_tileset_final.png" id="5_qfnet"]
 [ext_resource type="Script" uid="uid://pcty8gea6gwq" path="res://scripts/tileMaps/wall_layer.gd" id="6_e3hyu"]
@@ -553,7 +553,7 @@ texture = ExtResource("3_qfnet")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/custom_data_0 = "iron"
-0:0/0/custom_data_1 = 100
+0:0/0/custom_data_1 = -1
 
 [sub_resource type="TileSet" id="TileSet_lquwl"]
 tile_size = Vector2i(32, 32)
