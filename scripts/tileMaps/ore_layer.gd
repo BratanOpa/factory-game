@@ -3,6 +3,8 @@ extends TileMapLayer
 
 var ore_amounts_dict: Dictionary = {}	# Contains amount ore remaining
 
+@export var unlimited_ores := true
+
 func set_ore_amounts(coords: Vector2i, amount: int) -> bool:
 	if !_sync_cell(coords): return false
 	ore_amounts_dict[coords] = amount
@@ -19,8 +21,11 @@ func get_ore_type(coords: Vector2i) -> String:	# "" means error
 
 func mine_ore(coords: Vector2i, amount: int) -> Dictionary:	# Returns what and how much digged { iron : 3 }
 	if amount < 0: return {}; # No negative values
-	var ore_amounts = get_ore_amounts(coords)
 	var ore_type = get_ore_type(coords)
+	if unlimited_ores:
+		return {ore_type : amount}
+	# LIMITED ORES MODE
+	var ore_amounts = get_ore_amounts(coords)
 	if ore_amounts < amount:	# Not enough ore
 		set_ore_amounts(coords, 0);
 		return {ore_type : ore_amounts}
@@ -33,7 +38,7 @@ func _sync_cell(coords: Vector2i) -> bool:	# Verifies that cell is in Dictionary
 			return false # Error, no cell at coords
 		ore_amounts_dict[coords] = get_cell_tile_data(coords).get_custom_data("DefaultAmount")
 	return true
-	
+
 func _remove_if_empty(coords: Vector2i) -> bool:	# true if cell deleted
 	if get_ore_amounts(coords) <= 0:
 		ore_amounts_dict.erase(coords)

@@ -1208,4 +1208,4 @@ tile_set = SubResource("TileSet_8ywgp")
 script = ExtResource("6_e3hyu")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=524670695]
-color = Color(0.48877066, 0.49089622, 0.6444618, 1)
+color = Color(0.63839996, 0.64176005, 0.84, 1)

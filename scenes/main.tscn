@@ -19,6 +19,6 @@ script = ExtResource("8_choun")
 position = Vector2(3, 30)
 
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("6_tipki")]
-position = Vector2(-5, -27)
+position = Vector2(-29, -31)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("9_85g3d")]
