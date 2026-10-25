@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ceghi57066vtc"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=1387556504]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Icon" type="TextureRect" parent="." unique_id=793182720]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Amount" type="Label" parent="." unique_id=470843123]
+layout_mode = 2
+mouse_filter = 1
