@@ -1,6 +1,6 @@
 extends Machine
 
-var current_tile_index: int = 0	# just dummy indexer
+var current_tile_index: int = 0	# just dummy indexer to mine at different cells
 var stored_item: String = "" # holds the mined item if output is blocked
 
 @export var mining_amount : int = 1

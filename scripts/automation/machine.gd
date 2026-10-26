@@ -27,10 +27,14 @@ func get_surrounding_cells_pos(pos: Vector2i, size: Vector2i) -> Array[Vector2i]
 func push_item(id: String) -> bool:	# may be copy to Machine class
 	var target_cells = get_surrounding_cells_pos(grid_pos, machine_size)
 	var machines : MachineLayer = get_parent()
-	for cell_pos in target_cells:
-		var target_node = machines.get_machine_at(cell_pos)
-		if not target_node: continue
-		if target_node.has_method("accept_item"):
-			if target_node.accept_item(id):
-				return true
+	for pos in target_cells:
+		if not push_item_at(id, pos): continue	# Continue for loop if could not push item
+	return false
+	
+func push_item_at(id: String, pos: Vector2) -> bool:
+	var target_node = get_parent().get_machine_at(pos)
+	if not target_node: return false
+	if target_node.has_method("accept_item"):
+		if target_node.accept_item(id):
+			return true
 	return false
