@@ -1,5 +1,12 @@
 [gd_scene format=3 uid="uid://ceghi57066vtc"]
 
+[ext_resource type="FontFile" uid="uid://tx2nodxrcvb1" path="res://art/fonts/upheavtt.ttf" id="2_hlwxp"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqxwo"]
+font = ExtResource("2_hlwxp")
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [node name="HBoxContainer" type="HBoxContainer" unique_id=1387556504]
 offset_right = 40.0
 offset_bottom = 40.0
@@ -13,3 +20,4 @@ stretch_mode = 5
 [node name="Amount" type="Label" parent="." unique_id=470843123]
 layout_mode = 2
 mouse_filter = 1
+label_settings = SubResource("LabelSettings_yqxwo")

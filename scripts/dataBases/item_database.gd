@@ -4,7 +4,7 @@ class_name ItemDatabase
 static var items: Dictionary[String, Dictionary] = {
 	"iron": {
 		"display_name": "Iron Ore",
-		"texture": preload("res://tilesetsTemp/godot.svg")
+		"texture": preload("res://art/items/iron_ore_item.png")
 	},
 	"copper": {
 		"display_name": "Copper Ore",
