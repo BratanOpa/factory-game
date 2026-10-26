@@ -7,6 +7,7 @@ const ROW = preload("res://scenes/UI/storage_row.tscn")
 func _ready() -> void:
 	Storage.changed.connect(_on_storage_changed)
 
+
 func _on_storage_changed(id: String, new_amount: int) -> void:
 	var item_row = _get_row(id)
 	var label: Label = item_row.get_node("Amount")
