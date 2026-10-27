@@ -18,7 +18,7 @@ script = ExtResource("1_lrah1")
 script = ExtResource("3_0raed")
 
 [node name="TestChest" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("5_pgp7n")]
-position = Vector2(93, -1)
+position = Vector2(129, -1)
 
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("6_liq7w")]
 position = Vector2(-28, -31)
@@ -26,9 +26,21 @@ base_time = 3.0
 
 [node name="conveyer" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("6_ubw0i")]
 position = Vector2(30, 1)
+direction = Vector2i(1, 0)
+capacity = 10
+speed = 0.5
 
 [node name="conveyer2" parent="MachineLayer" unique_id=928703094 instance=ExtResource("6_ubw0i")]
 position = Vector2(61, 0)
+direction = Vector2i(1, 0)
+capacity = 10
+speed = 0.5
+
+[node name="conveyer3" parent="MachineLayer" unique_id=1324101125 instance=ExtResource("6_ubw0i")]
+position = Vector2(93, 0)
+direction = Vector2i(1, 0)
+capacity = 10
+speed = 0.5
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("7_42y3g")]
 

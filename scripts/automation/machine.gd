@@ -31,9 +31,10 @@ func push_item(id: String) -> bool:	# may be copy to Machine class
 	return false
 	
 func push_item_at(id: String, pos: Vector2i) -> bool:
+	var from_cell = pos.clamp(grid_pos, grid_pos + machine_size - Vector2i.ONE)
 	var target_node = get_parent().get_machine_at(pos)
 	if not target_node: return false
 	if target_node.has_method("accept_item"):
-		if target_node.accept_item(id):
+		if target_node.accept_item(id, from_cell):
 			return true
 	return false

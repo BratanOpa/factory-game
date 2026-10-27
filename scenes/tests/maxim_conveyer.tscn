@@ -9,6 +9,7 @@ size = Vector2(31, 29)
 [node name="conveyer" type="StaticBody2D" unique_id=1328008851]
 collision_layer = 2
 script = ExtResource("1_xqkmn")
+direction = Vector2i(-1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1142740946]
 position = Vector2(16.5, 16.5)
