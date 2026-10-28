@@ -1,14 +1,15 @@
-[gd_scene format=3 uid="uid://dl03a8it5xj72"]
+[gd_scene format=3 uid="uid://spvjuyaxhve6"]
 
-[ext_resource type="Script" uid="uid://bftuwv8wtjg32" path="res://scripts/automation/belt/belt.gd" id="1_7cd8w"]
-[ext_resource type="Texture2D" uid="uid://n6h4b7aln4aj" path="res://tilesetsTemp/automatisation/32px-Transport_belt.png" id="1_rntgv"]
+[ext_resource type="Script" uid="uid://c65u1dddwvk62" path="res://scripts/automation/conveyer.gd" id="1_xqkmn"]
+[ext_resource type="Texture2D" uid="uid://n6h4b7aln4aj" path="res://tilesetsTemp/automatisation/32px-Transport_belt.png" id="2_gp0qi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
 size = Vector2(31, 29)
 
 [node name="conveyer" type="StaticBody2D" unique_id=1328008851]
-script = ExtResource("1_7cd8w")
-machine_size = null
+collision_layer = 2
+script = ExtResource("1_xqkmn")
+direction = Vector2i(-1, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1142740946]
 position = Vector2(16.5, 16.5)
@@ -16,4 +17,4 @@ shape = SubResource("RectangleShape2D_tipki")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=554877851]
 position = Vector2(16, 16)
-texture = ExtResource("1_rntgv")
+texture = ExtResource("2_gp0qi")
