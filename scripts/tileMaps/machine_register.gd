@@ -1,5 +1,5 @@
 # This script register every machine, so they can easily find each other to transfer items
-class_name MachineLayer
+class_name MachineRegister
 extends Node2D
 
 var machines: Dictionary[Vector2i, Machine] = {}

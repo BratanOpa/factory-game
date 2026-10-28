@@ -1,13 +1,15 @@
 extends Machine
 
-var current_tile_index: int = 0	# just dummy indexer to mine at different cells
-var stored_item: String = "" # holds the mined item if output is blocked
-
 @export var mining_amount : int = 1
 @export var base_time: float = 1.0
 
+var current_tile_index: int = 0	# just dummy indexer to mine at different cells
+var stored_item: String = "" # holds the mined item if output is blocked
+var ore_layer: OreLayer
+
 func _ready() -> void:
 	super()
+	ore_layer = get_tree().get_first_node_in_group("ore_layer")
 	_update_speed()
 	$Timer.start()
 
