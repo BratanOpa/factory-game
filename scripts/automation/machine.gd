@@ -43,5 +43,8 @@ func push_item_at(id: String, pos: Vector2i) -> bool:
 			return true
 	return false
 
-func outputs_to(cell: Vector2i) -> bool:
+func outputs_to(_cell: Vector2i) -> bool:
+	return false
+
+func is_waiting_to_push(_cell: Vector2i) -> bool:	# has an item ready for that cell right now?
 	return false

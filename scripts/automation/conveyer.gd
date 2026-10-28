@@ -102,6 +102,8 @@ func accept_item(id: String, from_cell: Vector2i) -> bool:
 	if side == direction: return false #doesnt accept from destination
 	if side == -direction:
 		return _accept(id, start_pos)
+	var back = machine_register.get_machine_at(grid_pos - direction)
+	if back != null and back.is_waiting_to_push(grid_pos): return false	# back goes first
 	return _accept(id, center + Vector2(side) * 16)
 
 func _accept(id: String, entry_pos: Vector2) -> bool:
@@ -132,6 +134,9 @@ func _is_open(side: Vector2i) -> bool:
 
 func outputs_to(cell: Vector2i) -> bool:
 	return cell == grid_pos + direction
+
+func is_waiting_to_push(cell: Vector2i) -> bool:
+	return not items.is_empty() and items[0].progress >= 1.0 - spacing and cell == grid_pos + direction
 
 class Belt_Item:
 	var id: String

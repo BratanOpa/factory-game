@@ -54,3 +54,6 @@ func _mine() -> Dictionary:
 
 func outputs_to(cell: Vector2i) -> bool:
 	return get_surrounding_cells_pos(grid_pos, machine_size).has(cell)
+
+func is_waiting_to_push(cell: Vector2i) -> bool:
+	return not stored_item.is_empty() and outputs_to(cell)
