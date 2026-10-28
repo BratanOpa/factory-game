@@ -4,13 +4,11 @@ extends StaticBody2D
 @export var machine_size: Vector2i = Vector2i(1, 1) # e.g., 2x2
 var grid_pos: Vector2i
 var machine_layer: MachineLayer
-var ore_layer: OreLayer	#NAHYA?? machine does not need to know about Ore!
 
 func _ready() -> void:
 	position = position.snapped(Vector2(32,32))
 	machine_layer = get_parent()
-	ore_layer = get_tree().get_first_node_in_group("ore_layer")
-	grid_pos = ore_layer.local_to_map(ore_layer.to_local(global_position))	#MAKE machine layer grid, and calculate from it 
+	grid_pos = machine_layer.world_to_cell(global_position)
 	machine_layer.register_machine(grid_pos, machine_size, self)
 
 func _exit_tree() -> void:
@@ -39,4 +37,7 @@ func push_item_at(id: String, pos: Vector2i) -> bool:
 	if target_node.has_method("accept_item"):
 		if target_node.accept_item(id, from_cell):
 			return true
+	return false
+
+func outputs_to(cell: Vector2i) -> bool:
 	return false

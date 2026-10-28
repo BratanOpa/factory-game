@@ -5,9 +5,11 @@ var stored_item: String = "" # holds the mined item if output is blocked
 
 @export var mining_amount : int = 1
 @export var base_time: float = 1.0
+var ore_layer: OreLayer
 
 func _ready() -> void:
 	super()
+	ore_layer = get_tree().get_first_node_in_group("ore_layer")
 	_update_speed()
 	$Timer.start()
 
@@ -49,3 +51,6 @@ func _mine() -> Dictionary:
 	var mined = ore_layer.mine_ore(valid_tiles[current_tile_index], mining_amount)	# 1 -> how much it mines per tick
 	current_tile_index = (current_tile_index + 1) % valid_tiles.size()
 	return mined
+
+func outputs_to(cell: Vector2i) -> bool:
+	return get_surrounding_cells_pos(grid_pos, machine_size).has(cell)

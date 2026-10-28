@@ -3,7 +3,7 @@ extends Machine
 @export var direction: Vector2i = Vector2i.RIGHT
 @export var capacity: int = 3          # how many items fit on one conveyor
 @export var speed: float = 3.0         # speed of tiles/second
-@export var center = Vector2(16,12)
+@export var center = Vector2(16,15)
 var spacing : float
 var start_pos : Vector2
 var end_pos : Vector2
@@ -15,7 +15,16 @@ func _ready() -> void:
 	spacing = 1.0 / capacity
 	start_pos = center - Vector2(direction) * 16
 	end_pos = center + Vector2(direction) * 16
-	$Sprite2D.rotation = Vector2(direction).angle()
+	$Surface.material.set_shader_parameter("speed", speed)
+	$Surface.material.set_shader_parameter("dir", direction.x)
+	machine_layer.machines_changed.connect(_update_rails)
+	_update_rails()
+
+func _update_rails() -> void:
+	$RailTop.visible = not _is_open(Vector2i.UP)
+	$RailBottom.visible = not _is_open(Vector2i.DOWN)
+	$CapLeft.visible = not _is_open(Vector2i.LEFT)
+	$CapRight.visible = not _is_open(Vector2i.RIGHT)
 
 func _process(delta: float) -> void:
 	for i in items.size():
@@ -63,6 +72,17 @@ func _new_sprite(id: String, pos: Vector2) -> Sprite2D:
 	sprite.position = pos
 	add_child(sprite)
 	return sprite
+
+func _is_open(side: Vector2i) -> bool:
+	var neighbor = machine_layer.get_machine_at(grid_pos + side)
+	if neighbor == null:
+		return false
+	if side == direction:
+		return neighbor.has_method("accept_item")
+	return neighbor.outputs_to(grid_pos)
+
+func outputs_to(cell: Vector2i) -> bool:
+	return cell == grid_pos + direction
 
 class Belt_Item:
 	var id: String
