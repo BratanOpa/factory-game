@@ -55,5 +55,6 @@ icon = NodePath("../Body")
 speed = 20.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1405459179]
+zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
