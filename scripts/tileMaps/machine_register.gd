@@ -1,5 +1,5 @@
 # This script register every machine, so they can easily find each other to transfer items
-class_name MachineLayer
+class_name MachineRegister
 extends Node2D
 
 signal machines_changed
@@ -13,7 +13,6 @@ func world_to_cell(world_pos:Vector2) -> Vector2i:
 	return Vector2i(floor(local / CELL_SIZE))
 
 func register_machine(pos: Vector2i, size: Vector2i, machine: Machine) -> void:
-	print("registering!")
 	for x in range(pos.x, pos.x + size.x):
 		for y in range(pos.y, pos.y + size.y):
 			var cell = Vector2i(x, y)

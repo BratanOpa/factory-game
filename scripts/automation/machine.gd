@@ -2,17 +2,20 @@ class_name Machine
 extends StaticBody2D
 
 @export var machine_size: Vector2i = Vector2i(1, 1) # e.g., 2x2
+
+var TILE_SIZE: int = 32
 var grid_pos: Vector2i
-var machine_layer: MachineLayer
+var machine_register: MachineRegister
+var push_shifter: int = -1
 
 func _ready() -> void:
-	position = position.snapped(Vector2(32,32))
-	machine_layer = get_parent()
-	grid_pos = machine_layer.world_to_cell(global_position)
-	machine_layer.register_machine(grid_pos, machine_size, self)
+	position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
+	machine_register = get_parent()
+	grid_pos = machine_register.world_to_cell(global_position)
+	machine_register.register_machine(grid_pos, machine_size, self)
 
 func _exit_tree() -> void:
-	machine_layer.unregister_machine(grid_pos, machine_size) # Automatically unregister when deleted
+	machine_register.unregister_machine(grid_pos, machine_size) # Automatically unregister when deleted
 
 func get_surrounding_cells_pos(pos: Vector2i, size: Vector2i) -> Array[Vector2i]:	# no corners
 	var cells: Array[Vector2i] = []
@@ -24,15 +27,16 @@ func get_surrounding_cells_pos(pos: Vector2i, size: Vector2i) -> Array[Vector2i]
 		cells.append(Vector2i(pos.x + size.x, y))     # Right column
 	return cells
 
-func push_item(id: String) -> bool:	# may be copy to Machine class
+func push_item(id: String) -> bool:
 	var target_cells = get_surrounding_cells_pos(grid_pos, machine_size)
-	for pos in target_cells:
-		if push_item_at(id, pos): return true
+	for i in target_cells:
+		push_shifter = (push_shifter + 1) % target_cells.size()
+		if push_item_at(id, target_cells[push_shifter]): return true
 	return false
 	
 func push_item_at(id: String, pos: Vector2i) -> bool:
 	var from_cell = pos.clamp(grid_pos, grid_pos + machine_size - Vector2i.ONE)
-	var target_node = machine_layer.get_machine_at(pos)
+	var target_node = machine_register.get_machine_at(pos)
 	if not target_node: return false
 	if target_node.has_method("accept_item"):
 		if target_node.accept_item(id, from_cell):
