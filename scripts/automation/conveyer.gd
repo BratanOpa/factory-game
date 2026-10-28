@@ -17,7 +17,7 @@ func _ready() -> void:
 	end_pos = center + Vector2(direction) * 16
 	$Surface.material.set_shader_parameter("speed", speed)
 	$Surface.material.set_shader_parameter("dir", direction.x)
-	machine_layer.machines_changed.connect(_update_rails)
+	machine_register.machines_changed.connect(_update_rails)
 	_update_rails()
 
 func _update_rails() -> void:
@@ -74,7 +74,7 @@ func _new_sprite(id: String, pos: Vector2) -> Sprite2D:
 	return sprite
 
 func _is_open(side: Vector2i) -> bool:
-	var neighbor = machine_layer.get_machine_at(grid_pos + side)
+	var neighbor = machine_register.get_machine_at(grid_pos + side)
 	if neighbor == null:
 		return false
 	if side == direction:

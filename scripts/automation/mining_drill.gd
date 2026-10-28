@@ -1,10 +1,10 @@
 extends Machine
 
-var current_tile_index: int = 0	# just dummy indexer to mine at different cells
-var stored_item: String = "" # holds the mined item if output is blocked
-
 @export var mining_amount : int = 1
 @export var base_time: float = 1.0
+
+var ore_shifter: int = 0	# just dummy indexer to mine at different cells
+var stored_item: String = "" # holds the mined item if output is blocked
 var ore_layer: OreLayer
 
 func _ready() -> void:
@@ -47,9 +47,9 @@ func _get_valid_ore_tiles() -> Array[Vector2i]:
 func _mine() -> Dictionary:
 	var valid_tiles = _get_valid_ore_tiles()
 	if valid_tiles.size() == 0: return {}
-	current_tile_index %= valid_tiles.size()
-	var mined = ore_layer.mine_ore(valid_tiles[current_tile_index], mining_amount)	# 1 -> how much it mines per tick
-	current_tile_index = (current_tile_index + 1) % valid_tiles.size()
+	ore_shifter %= valid_tiles.size()
+	var mined = ore_layer.mine_ore(valid_tiles[ore_shifter], mining_amount)	# 1 -> how much it mines per tick
+	ore_shifter = (ore_shifter + 1) % valid_tiles.size()
 	return mined
 
 func outputs_to(cell: Vector2i) -> bool:

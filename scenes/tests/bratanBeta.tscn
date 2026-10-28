@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dukxigqykxn7t" path="res://scripts/main.gd" id="1_4yr38"]
 [ext_resource type="PackedScene" uid="uid://tog7dt24wg3s" path="res://scenes/world.tscn" id="2_ky6ap"]
-[ext_resource type="Script" uid="uid://c84gu5ms7rjtx" path="res://scripts/tileMaps/machine_layer.gd" id="3_hhihf"]
+[ext_resource type="Script" uid="uid://c84gu5ms7rjtx" path="res://scripts/tileMaps/machine_register.gd" id="3_hhihf"]
 [ext_resource type="PackedScene" uid="uid://blmmg4q6a6u6e" path="res://scenes/automationScene/chest.tscn" id="4_n1n33"]
 [ext_resource type="PackedScene" uid="uid://60n87vu2qdqq" path="res://scenes/automationScene/mining_drill.tscn" id="5_kfgma"]
+[ext_resource type="PackedScene" uid="uid://spvjuyaxhve6" path="res://scenes/automationScene/conveyer.tscn" id="5_oudvv"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="6_a6bak"]
-[ext_resource type="PackedScene" path="res://scenes/conveyer.tscn" id="7_tjvok"]
 
 [node name="BratanBeta" type="Node2D" unique_id=1633186520]
 script = ExtResource("1_4yr38")
@@ -22,8 +22,20 @@ position = Vector2(3, 30)
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("5_kfgma")]
 position = Vector2(-29, -31)
 
-[node name="Player" parent="." unique_id=467231700 instance=ExtResource("6_a6bak")]
+[node name="conveyer4" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("5_oudvv")]
+position = Vector2(60, 1)
+direction = Vector2i(0, -1)
 
-[node name="conveyer" parent="." unique_id=1328008851 instance=ExtResource("7_tjvok")]
-position = Vector2(32, 0)
-machine_size = Vector2i(1, 1)
+[node name="conveyer3" parent="MachineLayer" unique_id=1820848541 instance=ExtResource("5_oudvv")]
+position = Vector2(59, -27)
+direction = Vector2i(1, 0)
+
+[node name="conveyer2" parent="MachineLayer" unique_id=540761560 instance=ExtResource("5_oudvv")]
+position = Vector2(28, 1)
+direction = Vector2i(1, 0)
+
+[node name="conveyer" parent="MachineLayer" unique_id=353934494 instance=ExtResource("5_oudvv")]
+position = Vector2(28, -27)
+direction = Vector2i(1, 0)
+
+[node name="Player" parent="." unique_id=467231700 instance=ExtResource("6_a6bak")]
