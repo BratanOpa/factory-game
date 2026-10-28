@@ -43,9 +43,6 @@ shadow_filter_smooth = 1.0
 texture = ExtResource("2_qlg0r")
 offset = Vector2(137, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=659949062]
-zoom = Vector2(1.5, 1.5)
-
 [node name="Movement" type="Node" parent="." unique_id=1880376695]
 script = ExtResource("3_qhqgy")
 
@@ -56,3 +53,7 @@ script = ExtResource("4_dqkch")
 script = ExtResource("4_qlg0r")
 icon = NodePath("../Body")
 speed = 20.0
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1405459179]
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
