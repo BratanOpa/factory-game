@@ -118,7 +118,7 @@ func _accept(id: String, entry_pos: Vector2) -> bool:
 
 func _new_sprite(id: String, pos: Vector2) -> Sprite2D:
 	var sprite = Sprite2D.new()
-	sprite.texture = ItemDatabase.get_item_data(id)["texture"]
+	sprite.texture = ItemDB.get_item_data(id)["texture"]
 	sprite.z_index = 1
 	sprite.position = pos
 	add_child(sprite)

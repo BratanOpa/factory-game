@@ -1,4 +1,4 @@
-class_name ItemDatabase
+class_name ItemDB
 
 # A central database of all items in your game
 static var items: Dictionary[String, Dictionary] = {
@@ -11,9 +11,17 @@ static var items: Dictionary[String, Dictionary] = {
 		"texture": preload("res://tilesetsTemp/godot.svg")
 	},
 	"coal": {
-		"display_name": "Coal",
+		"display_name": "Coal Ore",
 		"texture": preload("res://tilesetsTemp/godot.svg")
-	}
+	},
+	"iron_plate": {
+		"display_name": "Iron plate",
+		"texture": preload("res://tilesetsTemp/godot.svg")
+	},
+	"copper_plate": {
+		"display_name": "Copper plate",
+		"texture": preload("res://tilesetsTemp/godot.svg")
+	},
 }
 
 static func get_item_data(item_name: String) -> Dictionary:
