@@ -1,34 +1,26 @@
 [gd_scene format=3 uid="uid://spvjuyaxhve6"]
 
 [ext_resource type="Script" uid="uid://c65u1dddwvk62" path="res://scripts/automation/conveyer.gd" id="1_xqkmn"]
-[ext_resource type="Texture2D" uid="uid://n6h4b7aln4aj" path="res://tilesetsTemp/automatisation/32px-Transport_belt.png" id="2_gp0qi"]
+[ext_resource type="Shader" uid="uid://dbsjja7024iqn" path="res://art/machines/conveyor/belt_scroll.gdshader" id="2_u28so"]
 [ext_resource type="Texture2D" uid="uid://c8spjbdm4b7pq" path="res://art/machines/conveyor/surface.png" id="3_7qird"]
 [ext_resource type="Texture2D" uid="uid://i0tp3xtoix13" path="res://art/machines/conveyor/rail_top.png" id="4_opv1j"]
 [ext_resource type="Texture2D" uid="uid://cu7ebqkekwuu5" path="res://art/machines/conveyor/rail_bottom.png" id="5_ll1p6"]
 [ext_resource type="Texture2D" uid="uid://dai2befn3ob36" path="res://art/machines/conveyor/cap_left.png" id="6_mcqrg"]
+[ext_resource type="Texture2D" uid="uid://dnufcnetg7wgm" path="res://art/machines/conveyor/surface_v.png" id="7_u28so"]
 [ext_resource type="Texture2D" uid="uid://uqe77gj0pn3n" path="res://art/machines/conveyor/cap_right.png" id="7_wl5pr"]
+[ext_resource type="Texture2D" uid="uid://b0dqy7y4pm4rk" path="res://art/machines/conveyor/cap_top_v.png" id="8_1oj1s"]
+[ext_resource type="Texture2D" uid="uid://3ho56t8ueqhd" path="res://art/machines/conveyor/cap_bottom_v.png" id="9_wlt4m"]
+[ext_resource type="Texture2D" uid="uid://b7y4w8ubrp572" path="res://art/machines/conveyor/rail_left_v.png" id="10_ovfqs"]
+[ext_resource type="Texture2D" uid="uid://jnlmqekf7one" path="res://art/machines/conveyor/rail_right_v.png" id="11_6al3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
 size = Vector2(31, 29)
 
-[sub_resource type="Shader" id="Shader_u28so"]
-code = "shader_type canvas_item;
-
-uniform float speed = 1.0;      // клеток в секунду, как у предметов
-uniform float dir = 1.0;        // 1 = вправо, -1 = влево
-
-void fragment() {
-	float shift = floor(TIME * speed * 32.0) * dir;  // сдвиг в целых пикселях
-	vec2 uv = UV;
-	uv.x -= shift / 32.0;                            // пиксели → доли текстуры
-	COLOR = texture(TEXTURE, fract(uv));             // fract = прокрутка по кругу
-}"
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yqxwo"]
 resource_local_to_scene = true
-shader = SubResource("Shader_u28so")
+shader = ExtResource("2_u28so")
 shader_parameter/speed = 1.0
-shader_parameter/dir = 1.0
+shader_parameter/dir = Vector2(1, 0)
 
 [node name="conveyer" type="StaticBody2D" unique_id=1328008851]
 collision_layer = 2
@@ -39,29 +31,50 @@ direction = Vector2i(-1, 0)
 position = Vector2(16.5, 16.5)
 shape = SubResource("RectangleShape2D_tipki")
 
-[node name="old" type="Sprite2D" parent="." unique_id=554877851]
-visible = false
-position = Vector2(16, 16)
-texture = ExtResource("2_gp0qi")
+[node name="Horizontal" type="Node2D" parent="." unique_id=1630808650]
 
-[node name="Surface" type="Sprite2D" parent="." unique_id=326764886]
+[node name="Surface" type="Sprite2D" parent="Horizontal" unique_id=326764886]
 material = SubResource("ShaderMaterial_yqxwo")
 position = Vector2(0, 6)
 texture = ExtResource("3_7qird")
 centered = false
 
-[node name="RailTop" type="Sprite2D" parent="." unique_id=156033264]
+[node name="Up" type="Sprite2D" parent="Horizontal" unique_id=156033264]
 texture = ExtResource("4_opv1j")
 centered = false
 
-[node name="RailBottom" type="Sprite2D" parent="." unique_id=1941547811]
+[node name="Down" type="Sprite2D" parent="Horizontal" unique_id=1941547811]
 texture = ExtResource("5_ll1p6")
 centered = false
 
-[node name="CapLeft" type="Sprite2D" parent="." unique_id=249596959]
+[node name="Left" type="Sprite2D" parent="Horizontal" unique_id=249596959]
 texture = ExtResource("6_mcqrg")
 centered = false
 
-[node name="CapRight" type="Sprite2D" parent="." unique_id=1012384497]
+[node name="Right" type="Sprite2D" parent="Horizontal" unique_id=1012384497]
 texture = ExtResource("7_wl5pr")
+centered = false
+
+[node name="Vertical" type="Node2D" parent="." unique_id=1157594303]
+
+[node name="Surface" type="Sprite2D" parent="Vertical" unique_id=1700142053]
+material = SubResource("ShaderMaterial_yqxwo")
+position = Vector2(7, 0)
+texture = ExtResource("7_u28so")
+centered = false
+
+[node name="Up" type="Sprite2D" parent="Vertical" unique_id=138684912]
+texture = ExtResource("8_1oj1s")
+centered = false
+
+[node name="Down" type="Sprite2D" parent="Vertical" unique_id=991945457]
+texture = ExtResource("9_wlt4m")
+centered = false
+
+[node name="Left" type="Sprite2D" parent="Vertical" unique_id=2080119527]
+texture = ExtResource("10_ovfqs")
+centered = false
+
+[node name="Right" type="Sprite2D" parent="Vertical" unique_id=743700175]
+texture = ExtResource("11_6al3l")
 centered = false

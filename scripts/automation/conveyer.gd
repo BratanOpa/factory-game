@@ -7,6 +7,7 @@ extends Machine
 var spacing : float
 var start_pos : Vector2
 var end_pos : Vector2
+var belt: Node2D
 
 var items: Array[Belt_Item] = []           # the queue
 
@@ -15,16 +16,21 @@ func _ready() -> void:
 	spacing = 1.0 / capacity
 	start_pos = center - Vector2(direction) * 16
 	end_pos = center + Vector2(direction) * 16
-	$Surface.material.set_shader_parameter("speed", speed)
-	$Surface.material.set_shader_parameter("dir", direction.x)
+	var horizontal = direction.x != 0
+	$Horizontal.visible = horizontal
+	$Vertical.visible = not horizontal
+	belt = $Horizontal if horizontal else $Vertical
+	var surface = belt.get_node("Surface")
+	surface.material.set_shader_parameter("speed", speed)
+	surface.material.set_shader_parameter("dir", Vector2(direction))
 	machine_layer.machines_changed.connect(_update_rails)
 	_update_rails()
 
 func _update_rails() -> void:
-	$RailTop.visible = not _is_open(Vector2i.UP)
-	$RailBottom.visible = not _is_open(Vector2i.DOWN)
-	$CapLeft.visible = not _is_open(Vector2i.LEFT)
-	$CapRight.visible = not _is_open(Vector2i.RIGHT)
+	belt.get_node("Up").visible = not _is_open(Vector2i.UP)
+	belt.get_node("Down").visible = not _is_open(Vector2i.DOWN)
+	belt.get_node("Left").visible = not _is_open(Vector2i.LEFT)
+	belt.get_node("Right").visible = not _is_open(Vector2i.RIGHT)
 
 func _process(delta: float) -> void:
 	for i in items.size():
