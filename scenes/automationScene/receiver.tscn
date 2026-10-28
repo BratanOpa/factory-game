@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://blmmg4q6a6u6e"]
+
+[ext_resource type="Script" uid="uid://dq77wxaqu83v1" path="res://scripts/automation/receiver.gd" id="1_itq6e"]
+[ext_resource type="Texture2D" uid="uid://kld7m203dwq2" path="res://art/machines/receiver/receiver.png" id="2_itq6e"]
+[ext_resource type="Texture2D" uid="uid://rw3uerrsp666" path="res://art/machines/receiver/receiver_glow.png" id="3_y7hj0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqxwo"]
+size = Vector2(32, 32)
+
+[node name="Receiver" type="StaticBody2D" unique_id=1823310025]
+z_index = 2
+collision_layer = 2
+script = ExtResource("1_itq6e")
+
+[node name="Bsae" type="Sprite2D" parent="." unique_id=1549162950]
+texture = ExtResource("2_itq6e")
+centered = false
+
+[node name="Glow" type="Sprite2D" parent="." unique_id=1088904189]
+visible = false
+texture = ExtResource("3_y7hj0")
+centered = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=617512500]
+visible = false
+position = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_yqxwo")
+
+[node name="GlowTimer" type="Timer" parent="." unique_id=1045162674]
+wait_time = 0.15
+one_shot = true
+
+[connection signal="timeout" from="GlowTimer" to="." method="_on_glow_timer_timeout"]

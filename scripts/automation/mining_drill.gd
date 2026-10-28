@@ -2,6 +2,7 @@ extends Machine
 
 @export var mining_amount : int = 1
 @export var base_time: float = 1.0
+@export var turns_per_item: float = 0.5	# how much the head turns while mining one item
 
 var ore_shifter: int = 0	# just dummy indexer to mine at different cells
 var stored_item: String = "" # holds the mined item if output is blocked
@@ -12,6 +13,11 @@ func _ready() -> void:
 	ore_layer = get_tree().get_first_node_in_group("ore_layer")
 	_update_speed()
 	$Timer.start()
+
+func _process(delta: float) -> void:
+	var working = not $Timer.is_stopped() and stored_item.is_empty()
+	if working:
+		$Head.rotation += TAU * turns_per_item / $Timer.wait_time * delta
 
 func _on_timer_timeout() -> void:	# timer-node
 	if stored_item.is_empty():

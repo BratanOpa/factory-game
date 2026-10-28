@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8de7gjngyou"
-path="res://.godot/imported/reciever.png-506a49fb27b38a7cc4bd61e255b6b55b.ctex"
+uid="uid://kld7m203dwq2"
+path="res://.godot/imported/receiver.png-39b19bd7cffe0424b0ccd8df10212197.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/reciever.png"
-dest_files=["res://.godot/imported/reciever.png-506a49fb27b38a7cc4bd61e255b6b55b.ctex"]
+source_file="res://art/machines/receiver/receiver.png"
+dest_files=["res://.godot/imported/receiver.png-39b19bd7cffe0424b0ccd8df10212197.ctex"]
 
 [params]
 
