@@ -22,9 +22,9 @@ func _get_row(id: String) -> HBoxContainer:
 func _add_row(id: String) -> HBoxContainer:
 	var row  = ROW.instantiate()
 	var icon : TextureRect = row.get_node("Icon")
-	var item_name : String = ItemDatabase.get_item_data(id)["display_name"]
+	var item_name : String = ItemDB.get_item_data(id)["display_name"]
 	row.tooltip_text = item_name
-	icon.texture = ItemDatabase.get_item_data(id)["texture"]
+	icon.texture = ItemDB.get_item_data(id)["texture"]
 	rows[id] = row
 	add_child(row)
 	return row
