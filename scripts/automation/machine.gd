@@ -3,16 +3,18 @@ extends StaticBody2D
 
 @export var machine_size: Vector2i = Vector2i(1, 1) # e.g., 2x2
 var grid_pos: Vector2i
-var ore_layer: OreLayer
+var machine_layer: MachineLayer
+var ore_layer: OreLayer	#NAHYA?? machine does not need to know about Ore!
 
 func _ready() -> void:
 	position = position.snapped(Vector2(32,32))
+	machine_layer = get_parent()
 	ore_layer = get_tree().get_first_node_in_group("ore_layer")
-	grid_pos = ore_layer.local_to_map(ore_layer.to_local(global_position))
-	get_parent().register_machine(grid_pos, machine_size, self)
+	grid_pos = ore_layer.local_to_map(ore_layer.to_local(global_position))	#MAKE machine layer grid, and calculate from it 
+	machine_layer.register_machine(grid_pos, machine_size, self)
 
 func _exit_tree() -> void:
-	get_parent().unregister_machine(grid_pos, machine_size) # Automatically unregister when deleted
+	machine_layer.unregister_machine(grid_pos, machine_size) # Automatically unregister when deleted
 
 func get_surrounding_cells_pos(pos: Vector2i, size: Vector2i) -> Array[Vector2i]:	# no corners
 	var cells: Array[Vector2i] = []
@@ -32,7 +34,7 @@ func push_item(id: String) -> bool:	# may be copy to Machine class
 	
 func push_item_at(id: String, pos: Vector2i) -> bool:
 	var from_cell = pos.clamp(grid_pos, grid_pos + machine_size - Vector2i.ONE)
-	var target_node = get_parent().get_machine_at(pos)
+	var target_node = machine_layer.get_machine_at(pos)
 	if not target_node: return false
 	if target_node.has_method("accept_item"):
 		if target_node.accept_item(id, from_cell):

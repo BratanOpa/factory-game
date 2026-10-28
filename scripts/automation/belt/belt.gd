@@ -1,7 +1,9 @@
 extends Machine
 
-var direction: Vector2i
+class_name Belt
 
+var direction: Vector2i
+var containers: BeltItem
 
 func _ready() -> void:
 	_snap_angle()
@@ -9,6 +11,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	pass
+
+
+func get_next_conveyer():
+	pass
+
 
 
 func _snap_angle():

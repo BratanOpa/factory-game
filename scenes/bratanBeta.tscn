@@ -26,3 +26,4 @@ position = Vector2(-29, -31)
 
 [node name="conveyer" parent="." unique_id=1328008851 instance=ExtResource("7_tjvok")]
 position = Vector2(32, 0)
+machine_size = Vector2i(1, 1)
