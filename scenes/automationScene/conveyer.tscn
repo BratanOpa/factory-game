@@ -12,7 +12,18 @@
 [ext_resource type="Texture2D" uid="uid://3ho56t8ueqhd" path="res://art/machines/conveyor/cap_bottom_v.png" id="9_wlt4m"]
 [ext_resource type="Texture2D" uid="uid://b7y4w8ubrp572" path="res://art/machines/conveyor/rail_left_v.png" id="10_ovfqs"]
 [ext_resource type="Texture2D" uid="uid://jnlmqekf7one" path="res://art/machines/conveyor/rail_right_v.png" id="11_6al3l"]
+[ext_resource type="Shader" uid="uid://o02wfbpxhpqa" path="res://art/machines/conveyor/belt_corner.gdshader" id="13_wlt4m"]
+[ext_resource type="Texture2D" uid="uid://dtfvr5pp0uwyh" path="res://art/machines/conveyor/blank32.png" id="14_ovfqs"]
+[ext_resource type="Texture2D" uid="uid://di4gmv3ljml52" path="res://art/machines/conveyor/corner_tl.png" id="15_ovfqs"]
+[ext_resource type="Texture2D" uid="uid://cus78yvuuhc57" path="res://art/machines/conveyor/open_up.png" id="50_open"]
+[ext_resource type="Texture2D" uid="uid://cgqdpwgudd50h" path="res://art/machines/conveyor/open_down.png" id="51_open"]
+[ext_resource type="Texture2D" uid="uid://b0sggt8h2726l" path="res://art/machines/conveyor/open_left_v.png" id="52_open"]
+[ext_resource type="Texture2D" uid="uid://in06gwig5oxy" path="res://art/machines/conveyor/open_right_v.png" id="53_open"]
 
+[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_up_l.png" id="54_ext"]
+[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_up_r.png" id="55_ext"]
+[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_down_l.png" id="56_ext"]
+[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_down_r.png" id="57_ext"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
 size = Vector2(31, 29)
 
@@ -21,6 +32,44 @@ resource_local_to_scene = true
 shader = ExtResource("2_u28so")
 shader_parameter/speed = 1.0
 shader_parameter/dir = Vector2(1, 0)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inup"]
+resource_local_to_scene = true
+shader = ExtResource("2_u28so")
+shader_parameter/speed = 1.0
+shader_parameter/dir = Vector2(0, 1)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_indown"]
+resource_local_to_scene = true
+shader = ExtResource("2_u28so")
+shader_parameter/speed = 1.0
+shader_parameter/dir = Vector2(0, -1)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inleft"]
+resource_local_to_scene = true
+shader = ExtResource("2_u28so")
+shader_parameter/speed = 1.0
+shader_parameter/dir = Vector2(1, 0)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inright"]
+resource_local_to_scene = true
+shader = ExtResource("2_u28so")
+shader_parameter/speed = 1.0
+shader_parameter/dir = Vector2(-1, 0)
+shader_parameter/offset = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1tdiw"]
+resource_local_to_scene = true
+shader = ExtResource("13_wlt4m")
+shader_parameter/belt_tex = ExtResource("3_7qird")
+shader_parameter/speed = 1.0
+shader_parameter/period = 8.0
+shader_parameter/side_in = Vector2(-1, 0)
+shader_parameter/dir_out = Vector2(0, -1)
 
 [node name="conveyer" type="StaticBody2D" unique_id=1328008851]
 collision_layer = 2
@@ -55,6 +104,50 @@ centered = false
 texture = ExtResource("7_wl5pr")
 centered = false
 
+[node name="InUp" type="Sprite2D" parent="Horizontal" unique_id=481920001]
+material = SubResource("ShaderMaterial_inup")
+position = Vector2(7, 0)
+texture = ExtResource("7_u28so")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 18, 7)
+
+[node name="InDown" type="Sprite2D" parent="Horizontal" unique_id=481920002]
+material = SubResource("ShaderMaterial_indown")
+position = Vector2(7, 23)
+texture = ExtResource("7_u28so")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 18, 9)
+
+[node name="OpenUp" type="Sprite2D" parent="Horizontal" unique_id=481920021]
+texture = ExtResource("50_open")
+centered = false
+
+[node name="OpenDown" type="Sprite2D" parent="Horizontal" unique_id=481920022]
+texture = ExtResource("51_open")
+centered = false
+
+[node name="OpenUpL" type="Sprite2D" parent="Horizontal" unique_id=481920031]
+visible = false
+texture = ExtResource("54_ext")
+centered = false
+
+[node name="OpenUpR" type="Sprite2D" parent="Horizontal" unique_id=481920032]
+visible = false
+texture = ExtResource("55_ext")
+centered = false
+
+[node name="OpenDownL" type="Sprite2D" parent="Horizontal" unique_id=481920033]
+visible = false
+texture = ExtResource("56_ext")
+centered = false
+
+[node name="OpenDownR" type="Sprite2D" parent="Horizontal" unique_id=481920034]
+visible = false
+texture = ExtResource("57_ext")
+centered = false
+
 [node name="Vertical" type="Node2D" parent="." unique_id=1157594303]
 
 [node name="Surface" type="Sprite2D" parent="Vertical" unique_id=1700142053]
@@ -77,4 +170,39 @@ centered = false
 
 [node name="Right" type="Sprite2D" parent="Vertical" unique_id=743700175]
 texture = ExtResource("11_6al3l")
+centered = false
+
+[node name="InLeft" type="Sprite2D" parent="Vertical" unique_id=481920003]
+material = SubResource("ShaderMaterial_inleft")
+position = Vector2(0, 6)
+texture = ExtResource("3_7qird")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 7, 18)
+
+[node name="InRight" type="Sprite2D" parent="Vertical" unique_id=481920004]
+material = SubResource("ShaderMaterial_inright")
+position = Vector2(25, 6)
+texture = ExtResource("3_7qird")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 7, 18)
+
+[node name="OpenLeft" type="Sprite2D" parent="Vertical" unique_id=481920023]
+texture = ExtResource("52_open")
+centered = false
+
+[node name="OpenRight" type="Sprite2D" parent="Vertical" unique_id=481920024]
+texture = ExtResource("53_open")
+centered = false
+
+[node name="Corner" type="Node2D" parent="." unique_id=1559609939]
+
+[node name="Surface" type="Sprite2D" parent="Corner" unique_id=1382858634]
+material = SubResource("ShaderMaterial_1tdiw")
+texture = ExtResource("14_ovfqs")
+centered = false
+
+[node name="Frame" type="Sprite2D" parent="Corner" unique_id=173936614]
+texture = ExtResource("15_ovfqs")
 centered = false
