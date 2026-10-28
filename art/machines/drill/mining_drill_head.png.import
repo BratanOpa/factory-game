@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d22vcufknfcpe"
-path="res://.godot/imported/mining_drill_v1.png-8f124dcd1d9f4e43a6d302dc8408c71e.ctex"
+uid="uid://6lg6vjvgpv4u"
+path="res://.godot/imported/mining_drill_head.png-dd79214a0d1eada0aa2f752d3ae772c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/mining_drill_v1.png"
-dest_files=["res://.godot/imported/mining_drill_v1.png-8f124dcd1d9f4e43a6d302dc8408c71e.ctex"]
+source_file="res://art/machines/drill/mining_drill_head.png"
+dest_files=["res://.godot/imported/mining_drill_head.png-dd79214a0d1eada0aa2f752d3ae772c3.ctex"]
 
 [params]
 

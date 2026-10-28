@@ -1,18 +1,19 @@
 [gd_scene format=3 uid="uid://blmmg4q6a6u6e"]
 
 [ext_resource type="Script" uid="uid://dq77wxaqu83v1" path="res://scripts/automation/chest.gd" id="1_wgwu1"]
-[ext_resource type="Texture2D" uid="uid://drcevivnh7683" path="res://art/machines/chest_v2.png" id="2_wgwu1"]
+[ext_resource type="Texture2D" uid="uid://8de7gjngyou" path="res://art/machines/reciever.png" id="2_bldwh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqxwo"]
 size = Vector2(32, 32)
 
-[node name="TestChest" type="StaticBody2D" unique_id=1823310025]
+[node name="Reciever" type="StaticBody2D" unique_id=1823310025]
+z_index = 2
 collision_layer = 2
 script = ExtResource("1_wgwu1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1549162950]
-texture = ExtResource("2_wgwu1")
-offset = Vector2(16, 16)
+texture = ExtResource("2_bldwh")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=617512500]
 visible = false

@@ -19,11 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://cgqdpwgudd50h" path="res://art/machines/conveyor/open_down.png" id="51_open"]
 [ext_resource type="Texture2D" uid="uid://b0sggt8h2726l" path="res://art/machines/conveyor/open_left_v.png" id="52_open"]
 [ext_resource type="Texture2D" uid="uid://in06gwig5oxy" path="res://art/machines/conveyor/open_right_v.png" id="53_open"]
+[ext_resource type="Texture2D" uid="uid://dpad6ln6rst02" path="res://art/machines/conveyor/open_up_l.png" id="54_ext"]
+[ext_resource type="Texture2D" uid="uid://dkhdptxvv50wt" path="res://art/machines/conveyor/open_up_r.png" id="55_ext"]
+[ext_resource type="Texture2D" uid="uid://dpqn8feb4q7j7" path="res://art/machines/conveyor/open_down_l.png" id="56_ext"]
+[ext_resource type="Texture2D" uid="uid://dvo63n2v8alka" path="res://art/machines/conveyor/open_down_r.png" id="57_ext"]
 
-[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_up_l.png" id="54_ext"]
-[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_up_r.png" id="55_ext"]
-[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_down_l.png" id="56_ext"]
-[ext_resource type="Texture2D" path="res://art/machines/conveyor/open_down_r.png" id="57_ext"]
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tipki"]
 size = Vector2(31, 29)
 

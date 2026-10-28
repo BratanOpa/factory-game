@@ -1,19 +1,25 @@
 [gd_scene format=3 uid="uid://60n87vu2qdqq"]
 
 [ext_resource type="Script" uid="uid://csdtotrco6anv" path="res://scripts/automation/mining_drill.gd" id="1_8ywgp"]
-[ext_resource type="Texture2D" uid="uid://0e1ildueae01" path="res://art/machines/mining_drill_v2.png" id="2_8ywgp"]
+[ext_resource type="Texture2D" uid="uid://6lg6vjvgpv4u" path="res://art/machines/drill/mining_drill_head.png" id="2_y7b5e"]
+[ext_resource type="Texture2D" uid="uid://mjc4ro4mr5q4" path="res://art/machines/drill/mining_drill_base.png" id="3_mjsib"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6d4qn"]
 size = Vector2(44, 44)
 
 [node name="MiningDrill" type="StaticBody2D" unique_id=1715954616]
+z_index = 2
 collision_layer = 2
 script = ExtResource("1_8ywgp")
 machine_size = Vector2i(2, 2)
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=1862540965]
-texture = ExtResource("2_8ywgp")
-offset = Vector2(32, 32)
+[node name="Head" type="Sprite2D" parent="." unique_id=1105686618]
+texture = ExtResource("2_y7b5e")
+centered = false
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1862540965]
+texture = ExtResource("3_mjsib")
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=741338610]
 visible = false
