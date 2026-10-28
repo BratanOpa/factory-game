@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://tog7dt24wg3s" path="res://scenes/world.tscn" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://blmmg4q6a6u6e" path="res://scenes/automationScene/chest.tscn" id="6_tefeu"]
 [ext_resource type="PackedScene" uid="uid://60n87vu2qdqq" path="res://scenes/automationScene/mining_drill.tscn" id="6_tipki"]
+[ext_resource type="PackedScene" uid="uid://spvjuyaxhve6" path="res://scenes/automationScene/conveyer.tscn" id="8_85g3d"]
 [ext_resource type="Script" uid="uid://c84gu5ms7rjtx" path="res://scripts/tileMaps/machine_layer.gd" id="8_choun"]
 [ext_resource type="PackedScene" uid="uid://bxukss887kxks" path="res://scenes/UI/hud.tscn" id="8_tipki"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="9_85g3d"]
@@ -17,11 +18,32 @@ script = ExtResource("1_tefeu")
 script = ExtResource("8_choun")
 
 [node name="TestChest" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("6_tefeu")]
-position = Vector2(3, 30)
+position = Vector2(91, -33)
 
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("6_tipki")]
 position = Vector2(-29, -31)
 
+[node name="conveyer2" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("8_85g3d")]
+position = Vector2(30, -2)
+direction = Vector2i(1, 0)
+speed = 0.1
+
+[node name="conveyer3" parent="MachineLayer" unique_id=1553415930 instance=ExtResource("8_85g3d")]
+position = Vector2(61, -3)
+direction = Vector2i(0, -1)
+speed = 0.1
+
+[node name="conveyer5" parent="MachineLayer" unique_id=716776087 instance=ExtResource("8_85g3d")]
+position = Vector2(30, -31)
+direction = Vector2i(1, 0)
+speed = 0.1
+
+[node name="conveyer4" parent="MachineLayer" unique_id=1011150885 instance=ExtResource("8_85g3d")]
+position = Vector2(62, -31)
+direction = Vector2i(1, 0)
+speed = 0.1
+
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("9_85g3d")]
+visible = false
 
 [node name="HUD" parent="." unique_id=193188645 instance=ExtResource("8_tipki")]
