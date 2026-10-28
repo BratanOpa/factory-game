@@ -27,21 +27,32 @@ func _process(delta: float) -> void:
 		else:
 			limit = items[i-1].progress - spacing
 		item.progress = move_toward(item.progress, limit, speed * delta)
-		item.sprite.position = start_pos.lerp(end_pos, item.progress)
+		item.sprite.position = _item_position(item)
 	if not items.is_empty() and items[0].progress >= 1.0:
 		if push_item_at(items[0].id, grid_pos + direction):
 			items[0].sprite.queue_free()
 			items.pop_front()
 
+func _item_position(item: Belt_Item) -> Vector2:
+	if item.progress < 0.5:
+		return item.entry_pos.lerp(center, item.progress / 0.5)
+	return center.lerp(end_pos, (item.progress - 0.5) / 0.5)
+
 func accept_item(id: String, from_cell: Vector2i) -> bool:
-	if from_cell - grid_pos == direction: return false #doesnt accept from destination
 	if items.size() >= capacity: return false
+	var side = from_cell - grid_pos
+	if side == direction: return false #doesnt accept from destination
+	if side == -direction:
+		return _accept(id, start_pos)
+	return _accept(id, center + Vector2(side) * 16)
+
+func _accept(id: String, entry_pos: Vector2) -> bool:
 	if not items.is_empty() and items[-1].progress < spacing: return false
-	# accepted
 	var item = Belt_Item.new()
 	item.id = id
 	item.progress = 0.0
-	item.sprite = _new_sprite(id, start_pos)
+	item.entry_pos = entry_pos
+	item.sprite = _new_sprite(id, entry_pos)
 	items.append(item)
 	return true
 
@@ -57,3 +68,4 @@ class Belt_Item:
 	var id: String
 	var progress: float = 0.0 # 0.0 entrence 1.0 exit
 	var sprite: Sprite2D
+	var entry_pos: Vector2
