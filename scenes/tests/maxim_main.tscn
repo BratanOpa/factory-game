@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://spvjuyaxhve6" path="res://scenes/automationScene/conveyer.tscn" id="6_ubw0i"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="7_42y3g"]
 [ext_resource type="PackedScene" uid="uid://bxukss887kxks" path="res://scenes/UI/hud.tscn" id="8_eqyr0"]
+[ext_resource type="Texture2D" uid="uid://vppxtt8yaglj" path="res://art/machines/assembler/assembler.png" id="9_u1l2t"]
 
 [node name="Main" type="Node2D" unique_id=1633186520]
 script = ExtResource("1_lrah1")
@@ -47,3 +48,7 @@ speed = 0.5
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("7_42y3g")]
 
 [node name="HUD" parent="." unique_id=193188645 instance=ExtResource("8_eqyr0")]
+
+[node name="Assembler" type="Sprite2D" parent="." unique_id=538411977]
+position = Vector2(64, -64)
+texture = ExtResource("9_u1l2t")
