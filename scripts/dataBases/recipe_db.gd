@@ -1,16 +1,20 @@
 class_name RecipeDB
 
-static var assembler_recipes: Dictionary[String, Dictionary] = {
+const assembler_recipes: Dictionary[String, Dictionary] = {
 	"iron_plate": {
-		"result_count": 1,
 		"crafting_time": 2.0,
+		"result": {
+			"iron_plate": 1
+		},
 		"ingredients": {
 			"iron": 1
 		},
 	},
 	"copper_plate": {
-		"result_count": 1,
 		"crafting_time": 1.5,
+		"result": {
+			"copper_plate": 1
+		},
 		"ingredients": {
 			"copper": 1
 		},

@@ -2,11 +2,14 @@ class_name Machine
 extends StaticBody2D
 
 @export var machine_size: Vector2i = Vector2i(1, 1) # e.g., 2x2
+@export var accepted_items: Array[String]
 
-var TILE_SIZE: int = 32
-var grid_pos: Vector2i
+const TILE_SIZE: int = 32
+
 var machine_register: MachineRegister
-var push_shifter: int = -1
+var grid_pos: Vector2i
+var output_blocked: bool
+var push_shifter: int = -1	# dummy index shifter, so it push att diff positions
 
 func _ready() -> void:
 	position = position.snapped(Vector2(TILE_SIZE, TILE_SIZE))
@@ -37,7 +40,8 @@ func push_item(id: String) -> bool:
 func push_item_at(id: String, pos: Vector2i) -> bool:
 	var from_cell = pos.clamp(grid_pos, grid_pos + machine_size - Vector2i.ONE)
 	var target_node = machine_register.get_machine_at(pos)
-	if not target_node: return false
+	if not target_node:
+		return false
 	if target_node.has_method("accept_item"):
 		if target_node.accept_item(id, from_cell):
 			return true
