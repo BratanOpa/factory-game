@@ -85,12 +85,10 @@ func _process(delta: float) -> void:
 			limit = items[i-1].progress - spacing
 		item.progress = move_toward(item.progress, limit, speed * delta)
 		item.sprite.position = _item_position(item)
-	if not output_blocked and not items.is_empty() and items[0].progress >= 1.0:
+	if not items.is_empty() and items[0].progress >= 1.0:
 		if push_item_at(items[0].id, grid_pos + direction):	#WARNING: tries to push every tick?!
 			items[0].sprite.queue_free()
 			items.pop_front()
-		else:
-			output_blocked = true
 
 func _item_position(item: Belt_Item) -> Vector2:
 	if item.progress < 0.5:

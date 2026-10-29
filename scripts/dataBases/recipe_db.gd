@@ -2,8 +2,8 @@ class_name RecipeDB
 
 const assembler_recipes: Dictionary[String, Dictionary] = {
 	"iron_plate": {
-		"crafting_time": 2.0,
-		"result": {
+		"crafting_time": 0.1,
+		"results": {
 			"iron_plate": 1
 		},
 		"ingredients": {
@@ -11,8 +11,8 @@ const assembler_recipes: Dictionary[String, Dictionary] = {
 		},
 	},
 	"copper_plate": {
-		"crafting_time": 1.5,
-		"result": {
+		"crafting_time": 0.5,
+		"results": {
 			"copper_plate": 1
 		},
 		"ingredients": {

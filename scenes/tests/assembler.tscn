@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://dj8fnx81esqpq"]
+
+[ext_resource type="Script" uid="uid://c1pvikqyu1p0u" path="res://scenes/tests/assembler.gd" id="1_71etc"]
+[ext_resource type="Texture2D" uid="uid://vppxtt8yaglj" path="res://art/machines/assembler/assembler.png" id="2_imvvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nehia"]
+size = Vector2(64, 64)
+
+[node name="assembler" type="StaticBody2D" unique_id=1347881319]
+script = ExtResource("1_71etc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1430945847]
+position = Vector2(32, 32)
+shape = SubResource("RectangleShape2D_nehia")
+
+[node name="Assembler" type="Sprite2D" parent="." unique_id=1439441017]
+position = Vector2(32, 32)
+texture = ExtResource("2_imvvv")
+
+[node name="Timer" type="Timer" parent="." unique_id=216058988]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

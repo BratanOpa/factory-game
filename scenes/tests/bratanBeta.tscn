@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://dukxigqykxn7t" path="res://scripts/main.gd" id="1_4yr38"]
 [ext_resource type="PackedScene" uid="uid://tog7dt24wg3s" path="res://scenes/world.tscn" id="2_ky6ap"]
 [ext_resource type="Script" uid="uid://c84gu5ms7rjtx" path="res://scripts/tileMaps/machine_register.gd" id="3_hhihf"]
-[ext_resource type="PackedScene" uid="uid://blmmg4q6a6u6e" path="res://scenes/automationScene/chest.tscn" id="4_n1n33"]
+[ext_resource type="PackedScene" uid="uid://blmmg4q6a6u6e" path="res://scenes/automationScene/receiver.tscn" id="4_n1n33"]
 [ext_resource type="PackedScene" uid="uid://60n87vu2qdqq" path="res://scenes/automationScene/mining_drill.tscn" id="5_kfgma"]
 [ext_resource type="PackedScene" uid="uid://spvjuyaxhve6" path="res://scenes/automationScene/conveyer.tscn" id="5_oudvv"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="6_a6bak"]
-[ext_resource type="Script" uid="uid://c1pvikqyu1p0u" path="res://scenes/tests/assembler.gd" id="7_qtvdb"]
+[ext_resource type="PackedScene" uid="uid://dj8fnx81esqpq" path="res://scenes/tests/assembler.tscn" id="7_qtvdb"]
 
 [node name="BratanBeta" type="Node2D" unique_id=1633186520]
 script = ExtResource("1_4yr38")
@@ -18,17 +18,50 @@ script = ExtResource("1_4yr38")
 script = ExtResource("3_hhihf")
 
 [node name="TestChest" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("4_n1n33")]
-position = Vector2(96, -32)
+position = Vector2(32, -96)
 
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("5_kfgma")]
 position = Vector2(-32, -32)
+base_time = 0.1
+
+[node name="RemoveMe" parent="MachineLayer" unique_id=1347881319 instance=ExtResource("7_qtvdb")]
+position = Vector2(-64, 32)
+machine_size = Vector2i(2, 2)
+
+[node name="assembler" parent="MachineLayer" unique_id=995937110 instance=ExtResource("7_qtvdb")]
+position = Vector2(96, -64)
+machine_size = Vector2i(2, 2)
 
 [node name="conveyer4" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("5_oudvv")]
 position = Vector2(64, 0)
 direction = Vector2i(0, -1)
 
+[node name="conveyer8" parent="MachineLayer" unique_id=1413617303 instance=ExtResource("5_oudvv")]
+position = Vector2(256, 32)
+direction = Vector2i(1, 1)
+
+[node name="conveyer7" parent="MachineLayer" unique_id=1182361247 instance=ExtResource("5_oudvv")]
+position = Vector2(224, 0)
+direction = Vector2i(1, 1)
+
+[node name="conveyer6" parent="MachineLayer" unique_id=1946494356 instance=ExtResource("5_oudvv")]
+position = Vector2(192, -32)
+direction = Vector2i(1, 1)
+
+[node name="conveyer5" parent="MachineLayer" unique_id=1174505595 instance=ExtResource("5_oudvv")]
+position = Vector2(160, -32)
+direction = Vector2i(1, 0)
+
+[node name="conveyer10" parent="MachineLayer" unique_id=966887107 instance=ExtResource("5_oudvv")]
+position = Vector2(0, 96)
+direction = Vector2i(1, 0)
+
 [node name="conveyer3" parent="MachineLayer" unique_id=1820848541 instance=ExtResource("5_oudvv")]
 position = Vector2(64, -32)
+direction = Vector2i(1, 0)
+
+[node name="conveyer9" parent="MachineLayer" unique_id=397530717 instance=ExtResource("5_oudvv")]
+position = Vector2(-32, 96)
 direction = Vector2i(1, 0)
 
 [node name="conveyer2" parent="MachineLayer" unique_id=540761560 instance=ExtResource("5_oudvv")]
@@ -39,10 +72,5 @@ direction = Vector2i(1, 0)
 position = Vector2(32, -32)
 direction = Vector2i(1, 0)
 
-[node name="assembler" type="StaticBody2D" parent="MachineLayer" unique_id=1647833249]
-position = Vector2(-32, -96)
-script = ExtResource("7_qtvdb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MachineLayer/assembler" unique_id=1647114881]
-
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("6_a6bak")]
+visible = false

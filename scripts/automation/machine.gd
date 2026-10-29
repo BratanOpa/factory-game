@@ -8,7 +8,6 @@ const TILE_SIZE: int = 32
 
 var machine_register: MachineRegister
 var grid_pos: Vector2i
-var output_blocked: bool
 var push_shifter: int = -1	# dummy index shifter, so it push att diff positions
 
 func _ready() -> void:
@@ -18,7 +17,8 @@ func _ready() -> void:
 	machine_register.register_machine(grid_pos, machine_size, self)
 
 func _exit_tree() -> void:
-	machine_register.unregister_machine(grid_pos, machine_size) # Automatically unregister when deleted
+	pass	# machine_register removes before this func call, which creates error
+	#machine_register.unregister_machine(grid_pos, machine_size) # Automatically unregister when deleted
 
 func get_surrounding_cells_pos(pos: Vector2i, size: Vector2i) -> Array[Vector2i]:	# no corners
 	var cells: Array[Vector2i] = []
@@ -40,11 +40,7 @@ func push_item(id: String) -> bool:
 func push_item_at(id: String, pos: Vector2i) -> bool:
 	var from_cell = pos.clamp(grid_pos, grid_pos + machine_size - Vector2i.ONE)
 	var target_node = machine_register.get_machine_at(pos)
-	if not target_node:
-		return false
-	if target_node.has_method("accept_item"):
-		if target_node.accept_item(id, from_cell):
-			return true
+	if target_node and target_node.has_method("accept_item") and target_node.accept_item(id, from_cell): return true
 	return false
 
 func outputs_to(_cell: Vector2i) -> bool:

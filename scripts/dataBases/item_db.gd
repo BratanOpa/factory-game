@@ -9,22 +9,22 @@ const items: Dictionary[String, Dictionary] = {
 	},
 	"copper": {
 		"display_name": "Copper Ore",
-		"texture": preload("res://tilesetsTemp/godot.svg"),
+		"texture": preload("res://tilesetsTemp/godot.svg"),	# temp
 		"stack": 50,
 	},
 	"coal": {
 		"display_name": "Coal Ore",
-		"texture": preload("res://tilesetsTemp/godot.svg"),
+		"texture": preload("res://tilesetsTemp/godot.svg"),	# temp
 		"stack": 50,
 	},
 	"iron_plate": {
 		"display_name": "Iron plate",
-		"texture": preload("res://tilesetsTemp/godot.svg"),
+		"texture": preload("res://art/machines/drill/mining_drill_head.png"),	# temp
 		"stack": 100,
 	},
 	"copper_plate": {
 		"display_name": "Copper plate",
-		"texture": preload("res://tilesetsTemp/godot.svg"),
+		"texture": preload("res://tilesetsTemp/godot.svg"),	# temp
 		"stack": 100,
 	},
 }
