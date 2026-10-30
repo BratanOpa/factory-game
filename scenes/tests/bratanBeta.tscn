@@ -26,7 +26,7 @@ base_time = 0.1
 
 [node name="assembler" parent="MachineLayer" unique_id=995937110 instance=ExtResource("7_qtvdb")]
 z_index = 2
-position = Vector2(96, -64)
+position = Vector2(96, -32)
 machine_size = Vector2i(2, 2)
 
 [node name="conveyer4" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("5_oudvv")]
@@ -62,7 +62,7 @@ position = Vector2(-32, 96)
 direction = Vector2i(1, 0)
 
 [node name="conveyer2" parent="MachineLayer" unique_id=540761560 instance=ExtResource("5_oudvv")]
-position = Vector2(32, 0)
+position = Vector2(32, 32)
 direction = Vector2i(1, 0)
 
 [node name="conveyer" parent="MachineLayer" unique_id=353934494 instance=ExtResource("5_oudvv")]

@@ -52,13 +52,6 @@ func get_crafting_items() -> Dictionary:	# if crafting now, then there is someth
 	if is_crafting(): crafting_results = recipe.get("results", {})
 	return crafting_results
 
-func accept_item(id: String, from_cell: Vector2i) -> bool:
-	if id in recipe.get("ingredients", {}) and input_items.get(id, 0) < ItemDB.get_item_data(id)["stack"]:
-		input_items[id] = input_items.get(id, 0) + 1
-		craft()
-		return true
-	return false;
-
 func try_push_item() -> bool:
 	for item in output_items:
 		if push_item(item):
@@ -67,3 +60,14 @@ func try_push_item() -> bool:
 				output_items.erase(item)
 			return true
 	return false
+
+
+func accept_item(id: String, from_cell: Vector2i) -> bool:
+	if id in recipe.get("ingredients", {}) and input_items.get(id, 0) < ItemDB.get_item_data(id)["stack"]:
+		input_items[id] = input_items.get(id, 0) + 1
+		craft()
+		return true
+	return false;
+
+func outputs_to(cell: Vector2i) -> bool:
+	return get_surrounding_cells_pos(grid_pos, machine_size).has(cell)
