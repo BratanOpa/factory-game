@@ -46,3 +46,6 @@ speed = 0.1
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("9_85g3d")]
 
 [node name="HUD" parent="." unique_id=193188645 instance=ExtResource("8_tipki")]
+
+[node name="ItemLayer" type="Node2D" parent="." unique_id=1083219155 groups=["item_layer"]]
+z_index = 1

@@ -4,6 +4,7 @@ extends Machine
 @export var capacity: int = 3          # how many items fit on one conveyor
 @export var speed: float = 3.0         # speed of tiles/second
 @export var center = Vector2(16,15)
+@export var merge_speed: float = 2.0
 var spacing : float
 var start_pos : Vector2
 var end_pos : Vector2
@@ -84,44 +85,57 @@ func _process(delta: float) -> void:
 		else:
 			limit = items[i-1].progress - spacing
 		item.progress = move_toward(item.progress, limit, speed * delta)
-		item.sprite.position = _item_position(item)
+		item.lateral = item.lateral.move_toward(Vector2.ZERO, speed * 32.0 * merge_speed * delta)
+		item.entity.global_position = to_global(_item_position(item))
 	if not items.is_empty() and items[0].progress >= 1.0:
-		if push_item_at(items[0].id, grid_pos + direction):	#WARNING: tries to push every tick?!
-			items[0].sprite.queue_free()
+		if push_item_at(items[0].entity, grid_pos + direction):
 			items.pop_front()
 
 func _item_position(item: Belt_Item) -> Vector2:
 	if item.progress < 0.5:
-		return item.entry_pos.lerp(center, item.progress / 0.5)
-	return center.lerp(end_pos, (item.progress - 0.5) / 0.5)
+		return item.entry_pos.lerp(center, item.progress / 0.5) + item.lateral
+	return center.lerp(end_pos, (item.progress - 0.5) / 0.5) + item.lateral
 
-func accept_item(id: String, from_cell: Vector2i) -> bool:
+func accept_item(entity: ItemEntity, from_cell: Vector2i) -> bool:
 	if items.size() >= capacity: return false
 	var side = from_cell - grid_pos
-	if side == direction: return false #doesnt accept from destination
+	if side == direction: return false # doesn't accept from its destination
 	if side == -direction:
-		return _accept(id, start_pos)
-	var back = machine_register.get_machine_at(grid_pos - direction)
-	if back != null and back.is_waiting_to_push(grid_pos): return false	# back goes first
-	return _accept(id, center + Vector2(side) * 16)
+		return _accept(entity, start_pos)
+	if _is_open(-direction):
+		return _merge(entity, side) # T-junction: merge into the middle
+	return _accept(entity, center + Vector2(side) * 16) # corner: L-path from the side edge
 
-func _accept(id: String, entry_pos: Vector2) -> bool:
+func _merge(entity: ItemEntity, side: Vector2i) -> bool:
+	var index = items.size() # where in the queue the new item goes
+	for i in items.size():
+		if items[i].progress < 0.5:
+			index = i
+			break
+	if index > 0 and items[index - 1].progress < 0.5 + spacing: return false # item ahead too close
+	if index < items.size() and items[index].progress > 0.5 - spacing: return false # item behind too close
+	var item = Belt_Item.new()
+	item.entity = entity
+	item.progress = 0.5
+	item.entry_pos = start_pos
+	item.lateral = Vector2(side) * 16 # starts at the side edge
+	_place(entity, center + item.lateral)
+	items.insert(index, item)
+	return true
+
+func _accept(entity: ItemEntity, entry_pos: Vector2) -> bool:
 	if not items.is_empty() and items[-1].progress < spacing: return false
 	var item = Belt_Item.new()
-	item.id = id
+	item.entity = entity
 	item.progress = 0.0
 	item.entry_pos = entry_pos
-	item.sprite = _new_sprite(id, entry_pos)
+	_place(entity, entry_pos)
 	items.append(item)
 	return true
 
-func _new_sprite(id: String, pos: Vector2) -> Sprite2D:
-	var sprite = Sprite2D.new()
-	sprite.texture = ItemDB.get_item_data(id)["texture"]
-	sprite.z_index = 1
-	sprite.position = pos
-	add_child(sprite)
-	return sprite
+func _place(entity: ItemEntity, local_pos: Vector2) -> void: # put the item on this belt at a point
+	entity.visible = true
+	entity.global_position = to_global(local_pos)
 
 func _is_open(side: Vector2i) -> bool:
 	var neighbor = machine_register.get_machine_at(grid_pos + side)
@@ -134,14 +148,11 @@ func _is_open(side: Vector2i) -> bool:
 func outputs_to(cell: Vector2i) -> bool:
 	return cell == grid_pos + direction
 
-func is_waiting_to_push(cell: Vector2i) -> bool:
-	return not items.is_empty() and items[0].progress >= 1.0 - spacing and cell == grid_pos + direction
-
 class Belt_Item:
-	var id: String
+	var entity: ItemEntity
 	var progress: float = 0.0 # 0.0 entrence 1.0 exit
-	var sprite: Sprite2D
 	var entry_pos: Vector2
+	var lateral: Vector2 = Vector2.ZERO	# sideways offset in px, shrinks to 0 after a side merge
 
 func _is_belt(side: Vector2i) -> bool:	# is there a conveyor in that neighbouring cell?
 	var neighbor = machine_register.get_machine_at(grid_pos + side)

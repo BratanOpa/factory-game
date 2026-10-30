@@ -25,7 +25,31 @@ position = Vector2(96, -32)
 position = Vector2(-32, -32)
 base_time = 3.0
 
-[node name="conveyer" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("6_ubw0i")]
+[node name="MiningDrill2" parent="MachineLayer" unique_id=819564943 instance=ExtResource("6_liq7w")]
+position = Vector2(-32, -224)
+base_time = 3.0
+
+[node name="conveyer4" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("6_ubw0i")]
+position = Vector2(32, -192)
+direction = Vector2i(1, 0)
+speed = 0.5
+
+[node name="conveyer6" parent="MachineLayer" unique_id=1238919196 instance=ExtResource("6_ubw0i")]
+position = Vector2(64, -192)
+direction = Vector2i(1, 0)
+speed = 0.5
+
+[node name="conveyer7" parent="MachineLayer" unique_id=1362157334 instance=ExtResource("6_ubw0i")]
+position = Vector2(96, -192)
+direction = Vector2i(1, 0)
+speed = 0.5
+
+[node name="conveyer8" parent="MachineLayer" unique_id=1039793732 instance=ExtResource("6_ubw0i")]
+position = Vector2(128, -192)
+direction = Vector2i(1, 0)
+speed = 0.5
+
+[node name="conveyer" parent="MachineLayer" unique_id=1193319689 instance=ExtResource("6_ubw0i")]
 position = Vector2(32, 0)
 direction = Vector2i(1, 0)
 speed = 0.5
@@ -52,3 +76,6 @@ speed = 0.5
 [node name="Assembler" type="Sprite2D" parent="." unique_id=538411977]
 position = Vector2(64, -64)
 texture = ExtResource("9_u1l2t")
+
+[node name="ItemLayer" type="Node2D" parent="." unique_id=1458258543 groups=["item_layer"]]
+z_index = 1

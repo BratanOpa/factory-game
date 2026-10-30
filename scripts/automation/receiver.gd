@@ -1,7 +1,8 @@
 extends Machine
 
-func accept_item(id: String, _from_cell: Vector2i) -> bool:
-	Storage.add(id, 1)
+func accept_item(item: ItemEntity, _from_cell: Vector2i) -> bool:
+	Storage.add(item.id, 1)
+	item.queue_free()
 	$Glow.visible = true
 	$GlowTimer.start()
 	return true

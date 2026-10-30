@@ -3,7 +3,7 @@ shader_type canvas_item;
 // Straight belt (and side-inlet patches). The stripe phase is measured as
 // "distance travelled from the cell's entry edge", the same way for every
 // direction, so belts, inlets and corners all line up at the joints.
-uniform float speed = 1.0;			// tiles per second, same as items
+uniform float speed = 1.0;		// tiles per second, same as items
 uniform vec2 dir = vec2(1.0, 0.0);	// travel direction
 uniform vec2 offset = vec2(0.0);	// this sprite's position inside the cell, in pixels
 

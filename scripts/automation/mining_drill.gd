@@ -1,34 +1,46 @@
 extends Machine
 
+const ITEM_SCENE = preload("res://scenes/item_entity.tscn")
+
 @export var mining_amount : int = 1
 @export var base_time: float = 1.0
 @export var turns_per_item: float = 0.5	# how much the head turns while mining one item
 
 var ore_shifter: int = 0	# just dummy indexer to mine at different cells
-var stored_item: String = "" # holds the mined item if output is blocked
+var stored_item: ItemEntity = null # holds the mined item if output is blocked
+var item_layer: Node2D
 var ore_layer: OreLayer
 
 func _ready() -> void:
 	super()
 	ore_layer = get_tree().get_first_node_in_group("ore_layer")
+	item_layer = get_tree().get_first_node_in_group("item_layer")
 	_update_speed()
 	$Timer.start()
 
 func _process(delta: float) -> void:
-	var working = not $Timer.is_stopped() and stored_item.is_empty()
+	var working = not $Timer.is_stopped() and stored_item == null
 	if working:
 		$Head.rotation += TAU * turns_per_item / $Timer.wait_time * delta
 
 func _on_timer_timeout() -> void:	# timer-node
-	if stored_item.is_empty():
+	if stored_item == null:
 		var mine_result = _mine()
 		if mine_result.is_empty():
 			$Timer.stop()	# timer stop
 			return
-		stored_item = mine_result.keys()[0]
+		stored_item = _spawn_item(mine_result.keys()[0])
 		_update_speed()
 	if push_item(stored_item):
-		stored_item = ""
+		stored_item = null
+
+func _spawn_item(id: String) -> ItemEntity:
+	var item: ItemEntity = ITEM_SCENE.instantiate()
+	item_layer.add_child(item)
+	item_layer.move_child(item, 0)	# newest item = first in the list = drawn under all others
+	item.setup(id)
+	item.visible = false			# it's still inside the drill
+	return item
 
 func _update_speed() -> void:
 	var tile_count = _get_valid_ore_tiles().size()
@@ -60,6 +72,3 @@ func _mine() -> Dictionary:
 
 func outputs_to(cell: Vector2i) -> bool:
 	return get_surrounding_cells_pos(grid_pos, machine_size).has(cell)
-
-func is_waiting_to_push(cell: Vector2i) -> bool:
-	return not stored_item.is_empty() and outputs_to(cell)

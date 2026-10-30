@@ -4,8 +4,8 @@ shader_type canvas_item;
 // corner (pivot) as it travels, like in Mindustry: the stripe itself keeps
 // its width, only the gaps between stripes grow toward the outer wall.
 uniform sampler2D belt_tex : filter_nearest, repeat_enable;	// surface.png
-uniform float speed = 1.0;					// tiles per second, same as items
 uniform float period = 8.0;				// stripe repeat in surface.png, in pixels
+uniform float speed = 1.0;		// tiles per second, same as items
 const float ARC = 24.0;					// belt length through the corner; must be a multiple of period
 uniform vec2 side_in = vec2(-1.0, 0.0);		// side items come from
 uniform vec2 dir_out = vec2(0.0, -1.0);		// direction items leave

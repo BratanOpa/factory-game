@@ -1,17 +1,11 @@
 [gd_scene format=3 uid="uid://572mh288cnfl"]
 
 [ext_resource type="Script" uid="uid://coemksncr8daw" path="res://scripts/automation/items/item_entity.gd" id="1_b1thk"]
-[ext_resource type="Texture2D" uid="uid://3kc5k1hk63pc" path="res://tilesetsTemp/godot.svg" id="2_ms5fu"]
+[ext_resource type="Texture2D" uid="uid://da8keiyepenb1" path="res://art/items/iron_ore_item.png" id="2_ms5fu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5qvhe"]
-radius = 4.0
-
-[node name="ItemEntity" type="Area2D" unique_id=1964024162]
+[node name="ItemEntity" type="Node2D" unique_id=1450969135]
+physics_interpolation_mode = 2
 script = ExtResource("1_b1thk")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1689555170]
-scale = Vector2(0.060546882, 0.060546882)
 texture = ExtResource("2_ms5fu")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1406971999]
-shape = SubResource("CircleShape2D_5qvhe")
