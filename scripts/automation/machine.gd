@@ -5,6 +5,7 @@ extends StaticBody2D
 @export var accepted_items: Array[String]
 
 const TILE_SIZE: int = 32
+const ITEM_SCENE = preload("res://scenes/item_entity.tscn")
 
 var machine_register: MachineRegister
 var grid_pos: Vector2i
@@ -45,3 +46,12 @@ func push_item_at(item: ItemEntity, pos: Vector2i) -> bool:
 
 func outputs_to(_cell: Vector2i) -> bool:
 	return false
+
+func spawn_item(id: String) -> ItemEntity:	# create a new item (hidden) in the shared ItemLayer
+	var item_layer = get_tree().get_first_node_in_group("item_layer")
+	var item: ItemEntity = ITEM_SCENE.instantiate()
+	item_layer.add_child(item)
+	item_layer.move_child(item, 0)	# newest item = first in the list = drawn under all others
+	item.setup(id)
+	item.visible = false			# still inside the machine
+	return item

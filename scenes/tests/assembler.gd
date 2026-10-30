@@ -4,6 +4,7 @@ var recipe_id: String
 var recipe: Dictionary
 var input_items: Dictionary	# iron : 10
 var output_items: Dictionary
+var pending_item: ItemEntity = null	# output item waiting to be pushed out
 
 func _ready() -> void:
 	super()
@@ -53,21 +54,27 @@ func get_crafting_items() -> Dictionary:	# if crafting now, then there is someth
 	return crafting_results
 
 func try_push_item() -> bool:
-	for item in output_items:
-		if push_item(item):
-			output_items[item] -= 1
-			if output_items[item] <= 0:
-				output_items.erase(item)
-			return true
+	if pending_item == null:	# take one item out of the output storage as a real item
+		for id in output_items:
+			pending_item = spawn_item(id)
+			output_items[id] -= 1
+			if output_items[id] <= 0:
+				output_items.erase(id)
+			break
+	if pending_item != null and push_item(pending_item):
+		pending_item = null
+		return true
 	return false
 
 
-func accept_item(id: String, from_cell: Vector2i) -> bool:
+func accept_item(item: ItemEntity, _from_cell: Vector2i) -> bool:
+	var id = item.id
 	if id in recipe.get("ingredients", {}) and input_items.get(id, 0) < ItemDB.get_item_data(id)["stack"]:
 		input_items[id] = input_items.get(id, 0) + 1
+		item.queue_free()	# the item becomes a number in the input storage
 		craft()
 		return true
-	return false;
+	return false
 
 func outputs_to(cell: Vector2i) -> bool:
 	return get_surrounding_cells_pos(grid_pos, machine_size).has(cell)
