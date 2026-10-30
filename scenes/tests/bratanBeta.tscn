@@ -24,11 +24,8 @@ position = Vector2(32, -96)
 position = Vector2(-32, -32)
 base_time = 0.1
 
-[node name="RemoveMe" parent="MachineLayer" unique_id=1347881319 instance=ExtResource("7_qtvdb")]
-position = Vector2(-64, 32)
-machine_size = Vector2i(2, 2)
-
 [node name="assembler" parent="MachineLayer" unique_id=995937110 instance=ExtResource("7_qtvdb")]
+z_index = 2
 position = Vector2(96, -64)
 machine_size = Vector2i(2, 2)
 

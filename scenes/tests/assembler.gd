@@ -3,7 +3,6 @@ extends Machine
 var recipe_id: String
 var recipe: Dictionary
 var input_items: Dictionary	# iron : 10
-var crafting_items: Dictionary
 var output_items: Dictionary
 
 func _ready() -> void:
@@ -14,22 +13,17 @@ func _process(delta: float) -> void:
 	try_push_item()
 
 func _on_timer_timeout() -> void:
-	for item in crafting_items:
-		if not output_items.has(item): output_items[item] = 0
-		output_items[item] += crafting_items[item]
-		crafting_items = {}
+	for result in recipe.get("results", {}):
+		if not output_items.has(result): output_items[result] = 0
+		output_items[result] += recipe["results"][result]
 	craft()
 
 func craft() -> bool:	# call this() when new item accepted or done craft
 	var ingredients = recipe.get("ingredients", {})
-	var results = recipe.get("results", {})
-	if not $Timer.is_stopped() or not is_enough_ingredients() or not is_enough_space(): return false
-	$Timer.start()
+	if is_crafting() or not is_enough_ingredients() or not is_enough_space(): return false
+	$Timer.start()	# craft started
 	for ingredient in ingredients:
 		input_items[ingredient] -= ingredients.get(ingredient, 0)
-	for result in results:
-		if not crafting_items.has(result): crafting_items[result] = 0
-		crafting_items[result] += results[result]
 	return true
 
 func load_receipe(id: String) -> bool:
@@ -47,8 +41,16 @@ func is_enough_ingredients() -> bool:
 func is_enough_space() -> bool:	# if output_items Dictionary has space for one more craft
 	var results = recipe.get("results", {})
 	for item in output_items:
-		if output_items[item] + crafting_items.get(item, 0) + results.get(item, 0) > ItemDB.get_item_data(item)["stack"]: return false
+		if output_items[item] + get_crafting_items().get(item, 0) + results.get(item, 0) > ItemDB.get_item_data(item)["stack"]: return false
 	return true;
+
+func is_crafting() -> bool:
+	return not $Timer.is_stopped()
+
+func get_crafting_items() -> Dictionary:	# if crafting now, then there is something, or empty
+	var crafting_results: Dictionary = {}
+	if is_crafting(): crafting_results = recipe.get("results", {})
+	return crafting_results
 
 func accept_item(id: String, from_cell: Vector2i) -> bool:
 	if id in recipe.get("ingredients", {}) and input_items.get(id, 0) < ItemDB.get_item_data(id)["stack"]:
