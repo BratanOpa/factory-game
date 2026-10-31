@@ -5,6 +5,8 @@
 [ext_resource type="Script" uid="uid://t0y6hc0ned3b" path="res://scripts/player/movement.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://d37s16400lgcq" path="res://scripts/player/digger.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://dmt8ly8nmgjr0" path="res://scripts/player/face_direction.gd" id="4_qlg0r"]
+[ext_resource type="Script" uid="uid://deg5f3yvrdqgb" path="res://scripts/player/camera_control.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://cjggx3025gewu" path="res://scripts/player/god_mode.gd" id="7_fjrip"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1tdiw"]
 radius = 11.0
@@ -62,3 +64,8 @@ speed = 20.0
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
+script = ExtResource("6_tuyoq")
+
+[node name="GodMode" type="Node" parent="." unique_id=63060887 node_paths=PackedStringArray("Collision")]
+script = ExtResource("7_fjrip")
+Collision = NodePath("../CollisionShape2D")

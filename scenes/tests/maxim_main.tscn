@@ -79,7 +79,9 @@ machine_size = Vector2i(2, 2)
 [node name="Receiver" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("5_pgp7n")]
 position = Vector2(192, -32)
 
+[node name="Receiver2" parent="MachineLayer" unique_id=1037433375 instance=ExtResource("5_pgp7n")]
+position = Vector2(160, -192)
+
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("7_42y3g")]
-visible = false
 
 [node name="HUD" parent="." unique_id=193188645 instance=ExtResource("8_eqyr0")]
