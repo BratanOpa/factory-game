@@ -5,7 +5,7 @@ extends Machine
 @export var turns_per_item: float = 0.5	# how much the head turns while mining one item
 
 var ore_shifter: int = 0	# just dummy indexer to mine at different cells
-var stored_item: ItemEntity = null # holds the mined item if output is blocked
+var stored_item: String = "" # holds the mined item if output is blocked
 var ore_layer: OreLayer
 
 func _ready() -> void:
@@ -15,20 +15,20 @@ func _ready() -> void:
 	$Timer.start()
 
 func _process(delta: float) -> void:
-	var working = not $Timer.is_stopped() and stored_item == null
+	var working = not $Timer.is_stopped() and stored_item.is_empty()
 	if working:
 		$Head.rotation += TAU * turns_per_item / $Timer.wait_time * delta
 
 func _on_timer_timeout() -> void:	# timer-node
-	if stored_item == null:
+	if stored_item.is_empty():
 		var mine_result = _mine()
 		if mine_result.is_empty():
 			$Timer.stop()	# timer stop
 			return
-		stored_item = spawn_item(mine_result.keys()[0])
+		stored_item = mine_result.keys()[0]
 		_update_speed()
 	if push_item(stored_item):
-		stored_item = null
+		stored_item = ""
 
 func _update_speed() -> void:
 	var tile_count = _get_valid_ore_tiles().size()

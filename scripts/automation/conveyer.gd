@@ -1,5 +1,7 @@
 extends Machine
 
+const ITEM_SCENE = preload("res://scenes/item_entity.tscn")
+
 @export var direction: Vector2i = Vector2i.RIGHT
 @export var capacity: int = 3          # how many items fit on one conveyor
 @export var speed: float = 3.0         # speed of tiles/second
@@ -88,7 +90,7 @@ func _process(delta: float) -> void:
 		item.lateral = item.lateral.move_toward(Vector2.ZERO, speed * 32.0 * merge_speed * delta)
 		item.entity.global_position = to_global(_item_position(item))
 	if not items.is_empty() and items[0].progress >= 1.0:
-		if push_item_at(items[0].entity, grid_pos + direction):
+		if _push_entity(items[0].entity, grid_pos + direction):
 			items.pop_front()
 
 func _item_position(item: Belt_Item) -> Vector2:
@@ -96,17 +98,33 @@ func _item_position(item: Belt_Item) -> Vector2:
 		return item.entry_pos.lerp(center, item.progress / 0.5) + item.lateral
 	return center.lerp(end_pos, (item.progress - 0.5) / 0.5) + item.lateral
 
-func accept_item(entity: ItemEntity, from_cell: Vector2i) -> bool:
+func _push_entity(entity: ItemEntity, cell: Vector2i) -> bool:	# hand the item to whatever is in front
+	var target = machine_register.get_machine_at(cell)
+	if target == null: return false
+	if target.has_method("accept_entity"):		# another belt: pass the same node on
+		return target.accept_entity(entity, grid_pos)
+	if push_item_at(entity.id, cell):			# a machine: it only needs the id
+		entity.queue_free()
+		return true
+	return false
+
+func accept_item(id: String, from_cell: Vector2i) -> bool:	# from machines: just an id
+	return _receive(id, null, from_cell)
+
+func accept_entity(entity: ItemEntity, from_cell: Vector2i) -> bool:	# from other belts: the item node itself
+	return _receive(entity.id, entity, from_cell)
+
+func _receive(id: String, entity: ItemEntity, from_cell: Vector2i) -> bool:
 	if items.size() >= capacity: return false
 	var side = from_cell - grid_pos
 	if side == direction: return false # doesn't accept from its destination
 	if side == -direction:
-		return _accept(entity, start_pos)
+		return _accept(id, entity, start_pos)
 	if _is_open(-direction):
-		return _merge(entity, side) # T-junction: merge into the middle
-	return _accept(entity, center + Vector2(side) * 16) # corner: L-path from the side edge
+		return _merge(id, entity, side) # T-junction: merge into the middle
+	return _accept(id, entity, center + Vector2(side) * 16) # corner: L-path from the side edge
 
-func _merge(entity: ItemEntity, side: Vector2i) -> bool:
+func _merge(id: String, entity: ItemEntity, side: Vector2i) -> bool:
 	var index = items.size() # where in the queue the new item goes
 	for i in items.size():
 		if items[i].progress < 0.5:
@@ -114,6 +132,8 @@ func _merge(entity: ItemEntity, side: Vector2i) -> bool:
 			break
 	if index > 0 and items[index - 1].progress < 0.5 + spacing: return false # item ahead too close
 	if index < items.size() and items[index].progress > 0.5 - spacing: return false # item behind too close
+	if entity == null:
+		entity = _spawn_entity(id)	# came from a machine: the item gets its node now
 	var item = Belt_Item.new()
 	item.entity = entity
 	item.progress = 0.5
@@ -123,8 +143,10 @@ func _merge(entity: ItemEntity, side: Vector2i) -> bool:
 	items.insert(index, item)
 	return true
 
-func _accept(entity: ItemEntity, entry_pos: Vector2) -> bool:
+func _accept(id: String, entity: ItemEntity, entry_pos: Vector2) -> bool:
 	if not items.is_empty() and items[-1].progress < spacing: return false
+	if entity == null:
+		entity = _spawn_entity(id)	# came from a machine: the item gets its node now
 	var item = Belt_Item.new()
 	item.entity = entity
 	item.progress = 0.0
@@ -136,6 +158,13 @@ func _accept(entity: ItemEntity, entry_pos: Vector2) -> bool:
 func _place(entity: ItemEntity, local_pos: Vector2) -> void: # put the item on this belt at a point
 	entity.visible = true
 	entity.global_position = to_global(local_pos)
+
+func _spawn_entity(id: String) -> ItemEntity:	# make the node for an item that enters the belts
+	var entity: ItemEntity = ITEM_SCENE.instantiate()
+	machine_register.item_layer.add_child(entity)
+	machine_register.item_layer.move_child(entity, 0)	# newest = drawn under the others
+	entity.setup(id)
+	return entity
 
 func _is_open(side: Vector2i) -> bool:
 	var neighbor = machine_register.get_machine_at(grid_pos + side)

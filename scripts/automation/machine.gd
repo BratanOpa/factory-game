@@ -5,7 +5,6 @@ extends StaticBody2D
 @export var accepted_items: Array[String]
 
 const TILE_SIZE: int = 32
-const ITEM_SCENE = preload("res://scenes/item_entity.tscn")
 
 var machine_register: MachineRegister
 var grid_pos: Vector2i
@@ -31,27 +30,18 @@ func get_surrounding_cells_pos(pos: Vector2i, size: Vector2i) -> Array[Vector2i]
 		cells.append(Vector2i(pos.x + size.x, y))     # Right column
 	return cells
 
-func push_item(item: ItemEntity) -> bool:
+func push_item(id: String) -> bool:
 	var target_cells = get_surrounding_cells_pos(grid_pos, machine_size)
 	for i in target_cells:
 		push_shifter = (push_shifter + 1) % target_cells.size()
-		if push_item_at(item, target_cells[push_shifter]): return true
+		if push_item_at(id, target_cells[push_shifter]): return true
 	return false
 	
-func push_item_at(item: ItemEntity, pos: Vector2i) -> bool:
+func push_item_at(id: String, pos: Vector2i) -> bool:
 	var from_cell = pos.clamp(grid_pos, grid_pos + machine_size - Vector2i.ONE)
 	var target_node = machine_register.get_machine_at(pos)
-	if target_node and target_node.has_method("accept_item") and target_node.accept_item(item, from_cell): return true
+	if target_node and target_node.has_method("accept_item") and target_node.accept_item(id, from_cell): return true
 	return false
 
 func outputs_to(_cell: Vector2i) -> bool:
 	return false
-
-func spawn_item(id: String) -> ItemEntity:	# create a new item (hidden) in the shared ItemLayer
-	var item_layer = get_tree().get_first_node_in_group("item_layer")
-	var item: ItemEntity = ITEM_SCENE.instantiate()
-	item_layer.add_child(item)
-	item_layer.move_child(item, 0)	# newest item = first in the list = drawn under all others
-	item.setup(id)
-	item.visible = false			# still inside the machine
-	return item

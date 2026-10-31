@@ -8,6 +8,14 @@ const CELL_SIZE := 32
 
 var machines: Dictionary[Vector2i, Machine] = {}
 
+var item_layer: Node2D
+
+func _ready() -> void:
+	item_layer = Node2D.new()
+	item_layer.name = "ItemLayer"
+	item_layer.z_index = 1
+	add_child(item_layer)
+
 func world_to_cell(world_pos:Vector2) -> Vector2i:
 	var local = to_local(world_pos)
 	return Vector2i(floor(local / CELL_SIZE))
