@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://blmmg4q6a6u6e"]
 
-[ext_resource type="Script" uid="uid://dq77wxaqu83v1" path="res://scripts/automation/receiver.gd" id="1_itq6e"]
-[ext_resource type="Texture2D" uid="uid://kld7m203dwq2" path="res://art/machines/receiver/receiver.png" id="2_itq6e"]
-[ext_resource type="Texture2D" uid="uid://rw3uerrsp666" path="res://art/machines/receiver/receiver_glow.png" id="3_y7hj0"]
+[ext_resource type="Script" uid="uid://dq77wxaqu83v1" path="res://scripts/automation/storage_input.gd" id="1_itq6e"]
+[ext_resource type="Texture2D" uid="uid://kld7m203dwq2" path="res://art/machines/storage_input/storage_input.png" id="2_itq6e"]
+[ext_resource type="Texture2D" uid="uid://rw3uerrsp666" path="res://art/machines/storage_input/glow.png" id="3_y7hj0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqxwo"]
 size = Vector2(32, 32)
 
-[node name="Receiver" type="StaticBody2D" unique_id=1823310025]
+[node name="StorageInput" type="StaticBody2D" unique_id=1823310025]
 z_index = 2
 collision_layer = 2
 script = ExtResource("1_itq6e")

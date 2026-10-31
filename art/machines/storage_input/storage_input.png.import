@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rw3uerrsp666"
-path="res://.godot/imported/receiver_glow.png-180d31069e5b9577273b275f0f5963e1.ctex"
+uid="uid://kld7m203dwq2"
+path="res://.godot/imported/storage_input.png-a26ded9e59eac2c9a6c1a36fa90328c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/machines/receiver/receiver_glow.png"
-dest_files=["res://.godot/imported/receiver_glow.png-180d31069e5b9577273b275f0f5963e1.ctex"]
+source_file="res://art/machines/storage_input/storage_input.png"
+dest_files=["res://.godot/imported/storage_input.png-a26ded9e59eac2c9a6c1a36fa90328c7.ctex"]
 
 [params]
 
