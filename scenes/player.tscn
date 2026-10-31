@@ -66,6 +66,6 @@ position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 script = ExtResource("6_tuyoq")
 
-[node name="GodMode" type="Node" parent="." unique_id=63060887 node_paths=PackedStringArray("Collision")]
+[node name="GodMode" type="Node" parent="." unique_id=63060887 node_paths=PackedStringArray("collision")]
 script = ExtResource("7_fjrip")
-Collision = NodePath("../CollisionShape2D")
+collision = NodePath("../CollisionShape2D")
