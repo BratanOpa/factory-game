@@ -2,19 +2,19 @@ class_name ItemDB
 
 # A central database of all items in your game
 const items: Dictionary[String, Dictionary] = {
-	"iron": {
+	"iron_ore": {
 		"display_name": "Iron Ore",
 		"texture": preload("res://art/items/iron_ore_item.png"),
 		"stack": 50,
 	},
-	"copper": {
+	"copper_ore": {
 		"display_name": "Copper Ore",
-		"texture": preload("res://tilesetsTemp/godot.svg"),	# temp
+		"texture": preload("res://art/machines/drill/mining_drill_head.png"),	# temp
 		"stack": 50,
 	},
 	"coal": {
 		"display_name": "Coal Ore",
-		"texture": preload("res://tilesetsTemp/godot.svg"),	# temp
+		"texture": preload("res://art/machines/drill/mining_drill_head.png"),	# temp
 		"stack": 50,
 	},
 	"iron_plate": {
@@ -24,7 +24,12 @@ const items: Dictionary[String, Dictionary] = {
 	},
 	"copper_plate": {
 		"display_name": "Copper plate",
-		"texture": preload("res://tilesetsTemp/godot.svg"),	# temp
+		"texture": preload("res://art/machines/drill/mining_drill_head.png"),	# temp
+		"stack": 100,
+	},
+	"gear": {
+		"display_name": "Gear",
+		"texture": preload("res://art/machines/chest.png"),	# temp
 		"stack": 100,
 	},
 }

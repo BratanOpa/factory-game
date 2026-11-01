@@ -1,3 +1,5 @@
+@abstract
+class_name BaseCrafter
 extends Machine
 
 var recipe_id: String
@@ -7,7 +9,6 @@ var output_items: Dictionary
 
 func _ready() -> void:
 	super()
-	load_receipe("iron_plate") # test
 
 func _process(delta: float) -> void:
 	try_push_item()
@@ -26,11 +27,8 @@ func craft() -> bool:	# call this() when new item accepted or done craft
 		input_items[ingredient] -= ingredients.get(ingredient, 0)
 	return true
 
-func load_receipe(id: String) -> bool:
-	recipe_id = id
-	recipe = RecipeDB.get_assembler_recipe_data(id)
-	$Timer.wait_time = recipe["crafting_time"]
-	return true;
+@abstract
+func load_receipe(id: String) -> bool
 
 func is_enough_ingredients() -> bool:
 	var ingredients = recipe.get("ingredients", {})
