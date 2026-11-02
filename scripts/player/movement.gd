@@ -6,6 +6,8 @@ extends Node
 @export var reverse : float = 1400
 
 @onready var player: CharacterBody2D = get_parent()
+@export var camera: Camera2D
+@export var god_mode_speed : float = 400
 
 var snappy: bool = false
 
@@ -20,5 +22,5 @@ func _physics_process(delta: float) -> void:
 			rate = reverse
 		player.velocity = player.velocity.move_toward(direction * speed, rate * delta)
 	else:
-		player.velocity = direction * speed
+		player.velocity = direction * god_mode_speed / camera.zoom.x
 	player.move_and_slide()

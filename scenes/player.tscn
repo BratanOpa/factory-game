@@ -51,11 +51,12 @@ shadow_filter_smooth = 1.0
 texture = ExtResource("2_qlg0r")
 offset = Vector2(137, 0)
 
-[node name="Movement" type="Node" parent="." unique_id=1880376695]
+[node name="Movement" type="Node" parent="." unique_id=1880376695 node_paths=PackedStringArray("camera")]
 script = ExtResource("3_qhqgy")
 acceleration = 1000.0
 friction = 700.0
 reverse = 1800.0
+camera = NodePath("../Camera2D")
 
 [node name="Digger" type="Node2D" parent="." unique_id=411662257]
 script = ExtResource("4_dqkch")

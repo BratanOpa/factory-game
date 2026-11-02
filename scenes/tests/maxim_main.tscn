@@ -89,14 +89,6 @@ position = Vector2(160, 0)
 direction = Vector2i(1, 0)
 speed = 0.25
 
-[node name="assembler2" parent="MachineLayer" unique_id=1347881319 instance=ExtResource("6_u1l2t")]
-z_index = 2
-position = Vector2(192, -64)
-
-[node name="assembler3" parent="MachineLayer" unique_id=2065880081 instance=ExtResource("6_u1l2t")]
-z_index = 2
-position = Vector2(192, 0)
-
 [node name="smelter" parent="MachineLayer" unique_id=1935840924 instance=ExtResource("7_ntbpp")]
 position = Vector2(96, -64)
 
@@ -108,6 +100,12 @@ position = Vector2(256, 96)
 
 [node name="Receiver2" parent="MachineLayer" unique_id=1037433375 instance=ExtResource("5_pgp7n")]
 position = Vector2(160, -192)
+
+[node name="assembler" parent="MachineLayer" unique_id=1347881319 instance=ExtResource("6_u1l2t")]
+position = Vector2(192, -64)
+
+[node name="assembler2" parent="MachineLayer" unique_id=88052648 instance=ExtResource("6_u1l2t")]
+position = Vector2(192, 0)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("7_42y3g")]
 
