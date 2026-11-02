@@ -20,6 +20,7 @@ script = ExtResource("3_hhihf")
 
 [node name="smelter" parent="MachineLayer" unique_id=1347881319 instance=ExtResource("9_swmwe")]
 position = Vector2(96, -32)
+accepted_items = null
 
 [node name="TestChest" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("4_n1n33")]
 position = Vector2(32, -96)

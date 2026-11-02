@@ -10,6 +10,8 @@ size = Vector2(64, 64)
 z_index = 2
 collision_layer = 2
 script = ExtResource("1_71etc")
+recipe_id = "gear"
+debug = true
 machine_size = Vector2i(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1430945847]
