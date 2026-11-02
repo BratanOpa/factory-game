@@ -2,29 +2,36 @@
 class_name BaseCrafter
 extends Machine
 
-var recipe_id: String
+@export var recipe_id: String
+@export var debug: bool 
+
 var recipe: Dictionary
 var input_items: Dictionary	# iron : 10
 var output_items: Dictionary
 
 func _ready() -> void:
 	super()
+	load_receipe(recipe_id)
+	$Timer.wait_time = recipe["crafting_time"]
 
 func _process(delta: float) -> void:
 	try_push_item()
 
-func _on_timer_timeout() -> void:
+func _on_timer_timeout() -> void:	# After crafting done, add results to output_items
 	for result in recipe.get("results", {}):
 		if not output_items.has(result): output_items[result] = 0
 		output_items[result] += recipe["results"][result]
-	craft()
+	craft()	# Try to craft next craft
 
 func craft() -> bool:	# call this() when new item accepted or done craft
 	var ingredients = recipe.get("ingredients", {})
 	if is_crafting() or not is_enough_ingredients() or not is_enough_space(): return false
-	$Timer.start()	# craft started
-	for ingredient in ingredients:
+	for ingredient in ingredients:	# Take ingredients for crafting
 		input_items[ingredient] -= ingredients.get(ingredient, 0)
+	if debug:
+		_on_timer_timeout()
+	else:
+		$Timer.start()	# craft started
 	return true
 
 @abstract

@@ -20,6 +20,7 @@ script = ExtResource("3_hhihf")
 
 [node name="smelter" parent="MachineLayer" unique_id=1347881319 instance=ExtResource("9_swmwe")]
 position = Vector2(96, -32)
+accepted_items = null
 
 [node name="TestChest" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("4_n1n33")]
 position = Vector2(32, -96)
@@ -42,7 +43,7 @@ direction = Vector2i(1, 1)
 
 [node name="conveyer6" parent="MachineLayer" unique_id=1946494356 instance=ExtResource("5_oudvv")]
 position = Vector2(192, -32)
-direction = Vector2i(1, 1)
+direction = Vector2i(0, 1)
 
 [node name="conveyer5" parent="MachineLayer" unique_id=1174505595 instance=ExtResource("5_oudvv")]
 position = Vector2(160, -32)
