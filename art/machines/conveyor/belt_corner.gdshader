@@ -18,6 +18,8 @@ void fragment() {
 	if (closed.y < -0.5 && p.y < 6.0) { discard; }
 	if (closed.x < -0.5 && p.x < 7.0) { discard; }
 	if (closed.x > 0.5 && p.x >= 25.0) { discard; }
+	// corner squares belong to the posts: never draw belt there (frame has see-through pixels)
+	if ((p.x < 7.0 || p.x >= 25.0) && (p.y < 6.0 || p.y >= 24.0)) { discard; }
 
 	vec2 pivot = vec2(16.0) + (side_in + dir_out) * 16.0;	// inner corner
 	vec2 d = abs(p - pivot);

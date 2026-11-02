@@ -110,6 +110,5 @@ position = Vector2(256, 96)
 position = Vector2(160, -192)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("7_42y3g")]
-visible = false
 
 [node name="HUD" parent="." unique_id=193188645 instance=ExtResource("8_eqyr0")]
