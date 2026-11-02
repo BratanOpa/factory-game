@@ -42,7 +42,7 @@ direction = Vector2i(1, 1)
 
 [node name="conveyer6" parent="MachineLayer" unique_id=1946494356 instance=ExtResource("5_oudvv")]
 position = Vector2(192, -32)
-direction = Vector2i(1, 1)
+direction = Vector2i(0, 1)
 
 [node name="conveyer5" parent="MachineLayer" unique_id=1174505595 instance=ExtResource("5_oudvv")]
 position = Vector2(160, -32)
