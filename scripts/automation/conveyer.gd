@@ -7,6 +7,7 @@ const ITEM_SCENE = preload("res://scenes/item_entity.tscn")
 @export var speed: float = 3.0         # speed of tiles/second
 @export var center = Vector2(16,15)
 @export var merge_speed: float = 2.0
+@export var merge_window: float = 0.17
 var spacing : float
 var start_pos : Vector2
 var end_pos : Vector2
@@ -130,16 +131,21 @@ func _merge(id: String, entity: ItemEntity, side: Vector2i) -> bool:
 		if items[i].progress < 0.5:
 			index = i
 			break
-	if index > 0 and items[index - 1].progress < 0.5 + spacing: return false # item ahead too close
-	if index < items.size() and items[index].progress > 0.5 - spacing: return false # item behind too close
+	var left_border = 0.5 - merge_window
+	var right_border = 0.5
+	if index < items.size():
+		left_border = max(left_border, items[index].progress + spacing)
+	if index > 0:
+		right_border = min(right_border, items[index - 1].progress - spacing)
+	if left_border > right_border: return false
 	if entity == null:
 		entity = _spawn_entity(id)	# came from a machine: the item gets its node now
 	var item = Belt_Item.new()
 	item.entity = entity
-	item.progress = 0.5
+	item.progress = right_border
 	item.entry_pos = start_pos
 	item.lateral = Vector2(side) * 16 # starts at the side edge
-	_place(entity, center + item.lateral)
+	_place(entity, _item_position(item))
 	items.insert(index, item)
 	return true
 

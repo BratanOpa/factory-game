@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dj8fnx81esqpq" path="res://scenes/tests/assembler.tscn" id="6_u1l2t"]
 [ext_resource type="PackedScene" uid="uid://spvjuyaxhve6" path="res://scenes/automationScene/conveyer.tscn" id="6_ubw0i"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="7_42y3g"]
+[ext_resource type="PackedScene" uid="uid://dvwh7dyejo06" path="res://scenes/tests/smellter.tscn" id="7_ntbpp"]
 [ext_resource type="PackedScene" uid="uid://bxukss887kxks" path="res://scenes/UI/hud.tscn" id="8_eqyr0"]
 
 [node name="Main" type="Node2D" unique_id=1633186520]
@@ -20,7 +21,7 @@ script = ExtResource("3_0raed")
 
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("6_liq7w")]
 position = Vector2(-32, -32)
-base_time = 3.0
+base_time = 0.1
 
 [node name="MiningDrill2" parent="MachineLayer" unique_id=819564943 instance=ExtResource("6_liq7w")]
 position = Vector2(-32, -224)
@@ -29,59 +30,86 @@ base_time = 3.0
 [node name="conveyer4" parent="MachineLayer" unique_id=1328008851 instance=ExtResource("6_ubw0i")]
 position = Vector2(32, -192)
 direction = Vector2i(1, 0)
-speed = 0.5
 
 [node name="conveyer6" parent="MachineLayer" unique_id=1238919196 instance=ExtResource("6_ubw0i")]
 position = Vector2(64, -192)
 direction = Vector2i(1, 0)
-speed = 0.5
 
 [node name="conveyer7" parent="MachineLayer" unique_id=1362157334 instance=ExtResource("6_ubw0i")]
 position = Vector2(96, -192)
 direction = Vector2i(1, 0)
-speed = 0.5
 
 [node name="conveyer8" parent="MachineLayer" unique_id=1039793732 instance=ExtResource("6_ubw0i")]
 position = Vector2(128, -192)
 direction = Vector2i(1, 0)
-speed = 0.5
 
 [node name="conveyer" parent="MachineLayer" unique_id=1193319689 instance=ExtResource("6_ubw0i")]
 position = Vector2(32, 0)
 direction = Vector2i(1, 0)
-speed = 0.5
 
 [node name="conveyer5" parent="MachineLayer" unique_id=904144308 instance=ExtResource("6_ubw0i")]
 position = Vector2(32, -32)
 direction = Vector2i(1, 0)
-speed = 0.5
-
-[node name="conveyer2" parent="MachineLayer" unique_id=928703094 instance=ExtResource("6_ubw0i")]
-position = Vector2(64, 0)
-direction = Vector2i(0, -1)
-speed = 0.5
 
 [node name="conveyer3" parent="MachineLayer" unique_id=1324101125 instance=ExtResource("6_ubw0i")]
 position = Vector2(64, -32)
 direction = Vector2i(1, 0)
-speed = 0.5
+
+[node name="conveyer14" parent="MachineLayer" unique_id=221699433 instance=ExtResource("6_ubw0i")]
+position = Vector2(64, 0)
+direction = Vector2i(1, 0)
+
+[node name="conveyer10" parent="MachineLayer" unique_id=386714802 instance=ExtResource("6_ubw0i")]
+position = Vector2(256, -32)
+direction = Vector2i(0, 1)
+speed = 0.15
+
+[node name="conveyer11" parent="MachineLayer" unique_id=1268722300 instance=ExtResource("6_ubw0i")]
+position = Vector2(256, 0)
+direction = Vector2i(0, 1)
+speed = 0.15
+
+[node name="conveyer12" parent="MachineLayer" unique_id=447618781 instance=ExtResource("6_ubw0i")]
+position = Vector2(256, 32)
+direction = Vector2i(0, 1)
+speed = 0.15
+
+[node name="conveyer13" parent="MachineLayer" unique_id=2137864036 instance=ExtResource("6_ubw0i")]
+position = Vector2(256, 64)
+direction = Vector2i(0, 1)
+speed = 0.15
 
 [node name="conveyer9" parent="MachineLayer" unique_id=35078197 instance=ExtResource("6_ubw0i")]
 position = Vector2(160, -32)
 direction = Vector2i(1, 0)
-speed = 0.5
+speed = 0.25
+
+[node name="conveyer15" parent="MachineLayer" unique_id=1536816491 instance=ExtResource("6_ubw0i")]
+position = Vector2(160, 0)
+direction = Vector2i(1, 0)
+speed = 0.25
 
 [node name="assembler2" parent="MachineLayer" unique_id=1347881319 instance=ExtResource("6_u1l2t")]
 z_index = 2
+position = Vector2(192, -64)
+
+[node name="assembler3" parent="MachineLayer" unique_id=2065880081 instance=ExtResource("6_u1l2t")]
+z_index = 2
+position = Vector2(192, 0)
+
+[node name="smelter" parent="MachineLayer" unique_id=1935840924 instance=ExtResource("7_ntbpp")]
 position = Vector2(96, -64)
-machine_size = Vector2i(2, 2)
+
+[node name="smelter2" parent="MachineLayer" unique_id=1330926169 instance=ExtResource("7_ntbpp")]
+position = Vector2(96, 0)
 
 [node name="Receiver" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("5_pgp7n")]
-position = Vector2(192, -32)
+position = Vector2(256, 96)
 
 [node name="Receiver2" parent="MachineLayer" unique_id=1037433375 instance=ExtResource("5_pgp7n")]
 position = Vector2(160, -192)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("7_42y3g")]
+visible = false
 
 [node name="HUD" parent="." unique_id=193188645 instance=ExtResource("8_eqyr0")]

@@ -10,7 +10,7 @@ uniform vec2 offset = vec2(0.0);	// this sprite's position inside the cell, in p
 void fragment() {
 	vec2 cell = UV / TEXTURE_PIXEL_SIZE + offset;	// pixel position inside the 32x32 cell
 	float dist = dir.x > 0.5 ? cell.x : (dir.x < -0.5 ? 32.0 - cell.x : (dir.y > 0.5 ? cell.y : 32.0 - cell.y));
-	float shift = floor(TIME * speed * 32.0);		// whole pixels, keeps pixel art crisp
+	float shift = TIME * speed * 32.0;		// whole pixels, keeps pixel art crisp
 	float i = fract((dist - shift) / 32.0);
 	vec2 uv = UV;
 	if (abs(dir.x) > 0.5) { uv.x = i; } else { uv.y = i; }

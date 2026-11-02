@@ -19,7 +19,7 @@ const items: Dictionary[String, Dictionary] = {
 	},
 	"iron_plate": {
 		"display_name": "Iron plate",
-		"texture": preload("res://art/machines/drill/mining_drill_head.png"),	# temp
+		"texture": preload("res://art/items/iron_plate.png"),
 		"stack": 100,
 	},
 	"copper_plate": {
@@ -29,7 +29,12 @@ const items: Dictionary[String, Dictionary] = {
 	},
 	"gear": {
 		"display_name": "Gear",
-		"texture": preload("res://art/machines/chest.png"),	# temp
+		"texture": preload("res://art/items/gear.png"),
+		"stack": 100,
+	},
+	"stone": {
+		"display_name": "Stone",
+		"texture": preload("res://art/items/stone.png"),
 		"stack": 100,
 	},
 }

@@ -23,9 +23,9 @@ void fragment() {
 	vec2 d = abs(p - pivot);
 	float r = length(d);
 	float a = atan(d.y, d.x) / (PI * 0.5);		// 0 on the top/bottom edge, 1 on the left/right edge
-	float s = dir_out.x != 0.0 ? a : 1.0 - a;	// 0 at the input edge, 1 at the output edge
-
-	float shift = floor(TIME * speed * 32.0);
+	float s = abs(dir_out.x) > 0.5 ? a : 1.0 - a;
+	
+	float shift = TIME * speed * 32.0;
 	float q = s * ARC - shift;					// distance travelled from the entry edge (same phase as straight belts)
 	float c = round(q / period) * period;		// nearest stripe slot
 	float t = r * sin((q - c) * (PI * 0.5) / ARC);	// angle offset -> real distance in pixels
