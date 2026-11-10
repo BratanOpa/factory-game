@@ -7,8 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://60n87vu2qdqq" path="res://scenes/automationScene/mining_drill.tscn" id="5_kfgma"]
 [ext_resource type="PackedScene" uid="uid://spvjuyaxhve6" path="res://scenes/automationScene/conveyer.tscn" id="5_oudvv"]
 [ext_resource type="PackedScene" uid="uid://di46jbj14qeve" path="res://scenes/player.tscn" id="6_a6bak"]
-[ext_resource type="PackedScene" uid="uid://dj8fnx81esqpq" path="res://scenes/tests/assembler.tscn" id="7_qtvdb"]
-[ext_resource type="PackedScene" uid="uid://dvwh7dyejo06" path="res://scenes/tests/smellter.tscn" id="9_swmwe"]
+[ext_resource type="PackedScene" uid="uid://dj8fnx81esqpq" path="res://scenes/automationScene/assembler.tscn" id="7_qtvdb"]
+[ext_resource type="PackedScene" uid="uid://dvwh7dyejo06" path="res://scenes/automationScene/smellter.tscn" id="9_swmwe"]
+[ext_resource type="PackedScene" uid="uid://bxukss887kxks" path="res://scenes/UI/hud.tscn" id="10_iklda"]
 
 [node name="BratanBeta" type="Node2D" unique_id=1633186520]
 script = ExtResource("1_4yr38")
@@ -23,7 +24,7 @@ position = Vector2(96, -32)
 accepted_items = null
 
 [node name="TestChest" parent="MachineLayer" unique_id=1823310025 instance=ExtResource("4_n1n33")]
-position = Vector2(32, -96)
+position = Vector2(288, 96)
 
 [node name="MiningDrill" parent="MachineLayer" unique_id=1715954616 instance=ExtResource("5_kfgma")]
 position = Vector2(-32, -32)
@@ -39,7 +40,7 @@ direction = Vector2i(1, 1)
 
 [node name="conveyer7" parent="MachineLayer" unique_id=1182361247 instance=ExtResource("5_oudvv")]
 position = Vector2(288, 64)
-direction = Vector2i(1, 1)
+direction = Vector2i(0, 1)
 
 [node name="conveyer6" parent="MachineLayer" unique_id=1946494356 instance=ExtResource("5_oudvv")]
 position = Vector2(192, -32)
@@ -74,3 +75,5 @@ position = Vector2(192, 0)
 
 [node name="Player" parent="." unique_id=467231700 instance=ExtResource("6_a6bak")]
 visible = false
+
+[node name="HUD" parent="." unique_id=193188645 instance=ExtResource("10_iklda")]

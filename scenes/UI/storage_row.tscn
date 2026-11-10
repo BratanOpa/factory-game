@@ -10,6 +10,7 @@ outline_color = Color(0, 0, 0, 1)
 [node name="HBoxContainer" type="HBoxContainer" unique_id=1387556504]
 offset_right = 40.0
 offset_bottom = 40.0
+offset_transform_enabled = true
 
 [node name="Icon" type="TextureRect" parent="." unique_id=793182720]
 custom_minimum_size = Vector2(32, 32)
